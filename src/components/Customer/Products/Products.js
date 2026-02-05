@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Button, Badge, Modal, Form } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Badge,
+  Modal,
+  Form,
+} from "react-bootstrap";
 import {
   FaHeart,
   FaCartPlus,
@@ -23,10 +32,10 @@ import { useWishlist } from "../../AuthContext/WishlistContext";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../../Firebase/firebase";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
-import Loading from '../../Loading/Loading';
+import Swal from "sweetalert2";
+import Loading from "../../Loading/Loading";
 import BulkOrderSection from "../AboutUs/EventOrderSection";
-import axios from 'axios';
+import axios from "axios";
 import baseURL from "../../Api/Api";
 
 const MasalaPastes = () => {
@@ -55,17 +64,20 @@ const MasalaPastes = () => {
         const response = await axios.get(`${baseURL}/get/products`);
 
         if (response.data.success) {
-          const productList = response.data.data.map(product => {
+          const productList = response.data.data.map((product) => {
             const parsedRating = parseFloat(product.rating) || 0;
 
             let priceToUse = parseFloat(product.price) || 0;
-            let originalPriceToUse = product.originalPrice ? parseFloat(product.originalPrice) : null;
+            let originalPriceToUse = product.originalPrice
+              ? parseFloat(product.originalPrice)
+              : null;
             let weightToUse = product.weight || "";
 
             if (product.weightOptions && product.weightOptions.length > 0) {
               priceToUse = parseFloat(product.weightOptions[0].price) || 0;
-              originalPriceToUse = product.weightOptions[0].originalPrice ?
-                parseFloat(product.weightOptions[0].originalPrice) : null;
+              originalPriceToUse = product.weightOptions[0].originalPrice
+                ? parseFloat(product.weightOptions[0].originalPrice)
+                : null;
               weightToUse = product.weightOptions[0].weight || "";
             }
 
@@ -83,12 +95,11 @@ const MasalaPastes = () => {
               images: product.images || [],
               image: product.image || "/uploads/default-product.jpg",
               weightOptions: product.weightOptions || [],
-              createdAt: product.createdAt
+              createdAt: product.createdAt,
             };
-
           });
           setProducts(productList);
-          console.log("Products=", productList)
+          console.log("Products=", productList);
         } else {
           console.error("Failed to fetch products:", response.data.error);
         }
@@ -112,11 +123,11 @@ const MasalaPastes = () => {
     if (newQuantity < 1) return;
     if (newQuantity > 20) {
       Swal.fire({
-        icon: 'warning',
-        title: 'Maximum Quantity Reached',
-        text: 'You can add up to 20 items at a time',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#f76f2f',
+        icon: "warning",
+        title: "Maximum Quantity Reached",
+        text: "You can add up to 20 items at a time",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#f76f2f",
       });
       return;
     }
@@ -125,10 +136,10 @@ const MasalaPastes = () => {
 
   const confirmAddToCart = async () => {
     if (!selectedProduct) return;
-    
+
     const productToAdd = {
       ...selectedProduct,
-      quantity: quantity
+      quantity: quantity,
     };
 
     await addToCart(productToAdd);
@@ -146,7 +157,7 @@ const MasalaPastes = () => {
 
     if (hasHalfStar) {
       stars.push(
-        <FaStar key="half" className="text-warning" style={{ opacity: 0.5 }} />
+        <FaStar key="half" className="text-warning" style={{ opacity: 0.5 }} />,
       );
     }
 
@@ -162,13 +173,13 @@ const MasalaPastes = () => {
     if (!currentUser) {
       // Handle guest cart using localStorage
       const guestCart = JSON.parse(
-        localStorage.getItem("guest_cart_items") || "[]"
+        localStorage.getItem("guest_cart_items") || "[]",
       );
 
       // Check if product already exists in cart with same weight
       const existingItemIndex = guestCart.findIndex(
         (item) =>
-          item.product_id === product.id && item.weight === product.weight
+          item.product_id === product.id && item.weight === product.weight,
       );
 
       if (existingItemIndex >= 0) {
@@ -191,11 +202,11 @@ const MasalaPastes = () => {
       localStorage.setItem("guest_cart_items", JSON.stringify(guestCart));
       refreshCart();
       Swal.fire({
-        icon: 'success',
-        title: '🛒 Added to Cart!',
+        icon: "success",
+        title: "🛒 Added to Cart!",
         html: `<strong>${product.name}</strong> (${product.weight}) has been added to your cart.`,
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#f76f2f',
+        confirmButtonText: "OK",
+        confirmButtonColor: "#f76f2f",
         backdrop: true,
         allowOutsideClick: false,
       });
@@ -207,10 +218,10 @@ const MasalaPastes = () => {
       console.error(
         "Attempted to add item with invalid price (final check):",
         product.name,
-        product.price
+        product.price,
       );
       alert(
-        "Cannot add to cart: Product price is invalid or zero. Please check product data."
+        "Cannot add to cart: Product price is invalid or zero. Please check product data.",
       );
       return;
     }
@@ -224,7 +235,7 @@ const MasalaPastes = () => {
       originalPrice: product.originalPrice || null,
       price: product.price,
       quantity: quantity,
-      weight: product.weight || ""
+      weight: product.weight || "",
     };
 
     try {
@@ -236,11 +247,11 @@ const MasalaPastes = () => {
       if (response.data?.success !== false) {
         refreshCart();
         Swal.fire({
-          icon: 'success',
-          title: '🛒 Added to Cart!',
+          icon: "success",
+          title: "🛒 Added to Cart!",
           html: `<strong>${product.name}</strong> (${product.weight}) has been added to your cart.`,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f',
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f",
           backdrop: true,
           allowOutsideClick: false,
         });
@@ -253,21 +264,21 @@ const MasalaPastes = () => {
       // Only show error if it's not a 200 response
       if (error.response?.status !== 200) {
         Swal.fire({
-          icon: 'error',
-          title: 'Failed to Add to Cart',
-          text: error.response?.data?.message || 'Please try again',
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f',
+          icon: "error",
+          title: "Failed to Add to Cart",
+          text: error.response?.data?.message || "Please try again",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f",
         });
       } else {
         // If we get here, it means the request succeeded (status 200) but maybe the response format is unexpected
         refreshCart();
         Swal.fire({
-          icon: 'success',
-          title: '🛒 Added to Cart!',
+          icon: "success",
+          title: "🛒 Added to Cart!",
           html: `<strong>${product.name}</strong> (${product.weight}) has been added to your cart.`,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f',
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f",
           backdrop: true,
           allowOutsideClick: false,
         });
@@ -277,34 +288,34 @@ const MasalaPastes = () => {
 
   const addToWishlist = async (product) => {
     // Determine the image to use - prioritize product.image, fall back to mainImage if available
-    const productImage = product.image
+    const productImage = product.image;
 
     if (!currentUser) {
       // Handle guest wishlist
       const guestWishlist = JSON.parse(
-        localStorage.getItem("guest_wishlist_items") || "[]"
+        localStorage.getItem("guest_wishlist_items") || "[]",
       );
 
       const existingIndex = guestWishlist.findIndex(
-        item => item.product_id === product.id
+        (item) => item.product_id === product.id,
       );
 
       if (existingIndex !== -1) {
         // Remove from wishlist
         const updatedWishlist = guestWishlist.filter(
-          item => item.product_id !== product.id
+          (item) => item.product_id !== product.id,
         );
         localStorage.setItem(
           "guest_wishlist_items",
-          JSON.stringify(updatedWishlist)
+          JSON.stringify(updatedWishlist),
         );
         setWishlistItems(updatedWishlist);
         Swal.fire({
-          icon: 'success',
-          title: '❤️ Removed from Wishlist!',
+          icon: "success",
+          title: "❤️ Removed from Wishlist!",
           html: `<strong>${product.name}</strong> removed from wishlist!`,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f', // Optional: match your brand color
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f", // Optional: match your brand color
           backdrop: true,
           allowOutsideClick: false,
         });
@@ -314,25 +325,27 @@ const MasalaPastes = () => {
           product_id: product.id,
           name: product.name,
           price: parseFloat(product.price) || 0,
-          original_price: product.originalPrice ? parseFloat(product.originalPrice) : parseFloat(product.price),
+          original_price: product.originalPrice
+            ? parseFloat(product.originalPrice)
+            : parseFloat(product.price),
           image: productImage,
           weight: product.weight || "",
           description: product.description || "",
-          added_at: new Date().toISOString()
+          added_at: new Date().toISOString(),
         };
 
         const updatedWishlist = [...guestWishlist, wishlistItem];
         localStorage.setItem(
           "guest_wishlist_items",
-          JSON.stringify(updatedWishlist)
+          JSON.stringify(updatedWishlist),
         );
         setWishlistItems(updatedWishlist);
         Swal.fire({
-          icon: 'success',
-          title: '❤️ Added to Wishlist!',
+          icon: "success",
+          title: "❤️ Added to Wishlist!",
           html: `<strong>${product.name}</strong> added to wishlist!`,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f', // Optional: match your brand color
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f", // Optional: match your brand color
           backdrop: true,
           allowOutsideClick: false,
         });
@@ -345,23 +358,25 @@ const MasalaPastes = () => {
     try {
       // Check if already in wishlist
       const checkResponse = await axios.get(
-        `${baseURL}/wishlist/check/${currentUser.uid}/${product.id}`
+        `${baseURL}/wishlist/check/${currentUser.uid}/${product.id}`,
       );
 
       if (checkResponse.data.exists) {
         // Remove from wishlist
-        await axios.delete(`${baseURL}/wishlist/${checkResponse.data.wishlistItemId}`);
+        await axios.delete(
+          `${baseURL}/wishlist/${checkResponse.data.wishlistItemId}`,
+        );
 
         // Update local state
-        setWishlistItems(prev =>
-          prev.filter(item => item.id !== checkResponse.data.wishlistItemId)
+        setWishlistItems((prev) =>
+          prev.filter((item) => item.id !== checkResponse.data.wishlistItemId),
         );
         Swal.fire({
-          icon: 'success',
-          title: '❤️ Removed from Wishlist!',
+          icon: "success",
+          title: "❤️ Removed from Wishlist!",
           html: `<strong>${product.name}</strong> removed from wishlist!`,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f', // Optional: match your brand color
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f", // Optional: match your brand color
           backdrop: true,
           allowOutsideClick: false,
         });
@@ -372,28 +387,33 @@ const MasalaPastes = () => {
           product_id: product.id,
           name: product.name,
           image: productImage,
-          original_price: product.originalPrice ? parseFloat(product.originalPrice) : parseFloat(product.price),
+          original_price: product.originalPrice
+            ? parseFloat(product.originalPrice)
+            : parseFloat(product.price),
           price: parseFloat(product.price) || 0,
           quantity: 1,
           weight: product.weight || "",
-          description: product.description || ""
+          description: product.description || "",
         };
 
         const response = await axios.post(`${baseURL}/wishlist`, wishlistData);
 
         // Update local state with the complete wishlist item data
-        setWishlistItems(prev => [...prev, {
-          ...wishlistData,
-          id: response.data.data.id,
-          added_at: response.data.data.added_at
-        }]);
+        setWishlistItems((prev) => [
+          ...prev,
+          {
+            ...wishlistData,
+            id: response.data.data.id,
+            added_at: response.data.data.added_at,
+          },
+        ]);
 
         Swal.fire({
-          icon: 'success',
-          title: '❤️ Added to Wishlist!',
+          icon: "success",
+          title: "❤️ Added to Wishlist!",
           html: `<strong>${product.name}</strong> added to wishlist!`,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#f76f2f', // Optional: match your brand color
+          confirmButtonText: "OK",
+          confirmButtonColor: "#f76f2f", // Optional: match your brand color
           backdrop: true,
           allowOutsideClick: false,
         });
@@ -403,10 +423,10 @@ const MasalaPastes = () => {
     } catch (error) {
       console.error("Error managing wishlist:", error);
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: error.response?.data?.message || 'Failed to update wishlist',
-        confirmButtonText: 'OK',
+        icon: "error",
+        title: "Error",
+        text: error.response?.data?.message || "Failed to update wishlist",
+        confirmButtonText: "OK",
       });
     }
   };
@@ -416,16 +436,21 @@ const MasalaPastes = () => {
       setLoading(true);
       try {
         if (currentUser?.uid) {
-          const response = await axios.get(`${baseURL}/wishlist/${currentUser.uid}`);
+          const response = await axios.get(
+            `${baseURL}/wishlist/${currentUser.uid}`,
+          );
           if (response.data.success) {
-
             setWishlistItems(response.data.data || []);
           } else {
-            console.warn("Failed to fetch wishlist items. Response:", response.data);
+            console.warn(
+              "Failed to fetch wishlist items. Response:",
+              response.data,
+            );
             setWishlistItems([]);
           }
         } else {
-          const guestWishlist = JSON.parse(localStorage.getItem("guest_wishlist_items")) || [];
+          const guestWishlist =
+            JSON.parse(localStorage.getItem("guest_wishlist_items")) || [];
           setWishlistItems(guestWishlist);
         }
       } catch (error) {
@@ -433,7 +458,6 @@ const MasalaPastes = () => {
         setWishlistItems([]);
       } finally {
         setLoading(false);
-
       }
     };
 
@@ -441,18 +465,12 @@ const MasalaPastes = () => {
   }, [currentUser, refreshWishlist]);
 
   const handleBuyClick = async (product) => {
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
-      navigate(`/buynow/${product.id.toString()}`, {
-        state: {
-          product: product,
-          selectedWeightOption: product.selectedWeightOption
-        }
-      });
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Shiprocket login failed!');
-    }
+    navigate(`/buynow/${product.id.toString()}`, {
+      state: {
+        product: product,
+        selectedWeightOption: product.selectedWeightOption,
+      },
+    });
   };
 
   if (loading) {
@@ -464,7 +482,9 @@ const MasalaPastes = () => {
   }
 
   const isInWishlist = (productId) => {
-    return wishlistItems.some(item => item.product_id.toString() === productId.toString());
+    return wishlistItems.some(
+      (item) => item.product_id.toString() === productId.toString(),
+    );
   };
 
   return (
@@ -499,8 +519,8 @@ const MasalaPastes = () => {
           </h1>
           <p className="text-muted">
             SouthSutra is not just about food. It's about the feeling you get
-            when you eat something made with love-like at home. Simple &
-            pure, you can trust us just like your own kitchen.
+            when you eat something made with love-like at home. Simple & pure,
+            you can trust us just like your own kitchen.
           </p>
         </div>
 
@@ -519,17 +539,19 @@ const MasalaPastes = () => {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-8px)";
-                  e.currentTarget.style.boxShadow = "0 12px 20px rgba(193, 68, 14, 0.15)";
+                  e.currentTarget.style.boxShadow =
+                    "0 12px 20px rgba(193, 68, 14, 0.15)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 12px rgba(0, 0, 0, 0.08)";
                 }}
               >
                 <div style={{ position: "relative", height: "200px" }}>
                   <Card.Img
                     variant="top"
-                    src={`${baseURL}${product.image}`}  // ⬅️ Now baseURL is applied here only
+                    src={`${baseURL}${product.image}`} // ⬅️ Now baseURL is applied here only
                     alt={product.name}
                     style={{
                       height: "100%",
@@ -538,7 +560,7 @@ const MasalaPastes = () => {
                       objectPosition: "center",
                     }}
                     onError={(e) => {
-                      e.target.src = '/placeholder-image.jpg';  // fallback image if image fails to load
+                      e.target.src = "/placeholder-image.jpg"; // fallback image if image fails to load
                     }}
                     onClick={() => navigate(`/viewdetails/${product.id}`)}
                   />
@@ -583,7 +605,12 @@ const MasalaPastes = () => {
                         className="ms-2 text-muted"
                         style={{ fontSize: "0.75rem" }}
                       >
-                        ({(typeof product.rating === 'number' ? product.rating : 0).toFixed(1)})
+                        (
+                        {(typeof product.rating === "number"
+                          ? product.rating
+                          : 0
+                        ).toFixed(1)}
+                        )
                       </span>
                     </div>
 
@@ -606,7 +633,8 @@ const MasalaPastes = () => {
                         style={{ fontSize: "1.1rem" }}
                       >
                         ₹
-                        {typeof product.price === "number" && !isNaN(product.price)
+                        {typeof product.price === "number" &&
+                        !isNaN(product.price)
                           ? product.price.toFixed(2)
                           : "N/A"}
                       </span>
@@ -639,11 +667,17 @@ const MasalaPastes = () => {
                           borderRadius: "50%",
                           width: "36px",
                           height: "36px",
-                          color: isInWishlist(product.id) ? '#dc3545' : 'inherit'
+                          color: isInWishlist(product.id)
+                            ? "#dc3545"
+                            : "inherit",
                         }}
                         onClick={() => addToWishlist(product)}
                       >
-                        {isInWishlist(product.id) ? <FaHeart /> : <FaRegHeart />}
+                        {isInWishlist(product.id) ? (
+                          <FaHeart />
+                        ) : (
+                          <FaRegHeart />
+                        )}
                       </Button>
                     </div>
 
@@ -665,7 +699,8 @@ const MasalaPastes = () => {
                         }}
                         onClick={() => navigate(`/viewdetails/${product.id}`)}
                       >
-                        View Details <span style={{ transition: "all 0.2s ease" }}>→</span>
+                        View Details{" "}
+                        <span style={{ transition: "all 0.2s ease" }}>→</span>
                       </a>
                     </div>
                   </div>
@@ -675,9 +710,13 @@ const MasalaPastes = () => {
           ))}
         </Row>
       </Container>
-      
+
       {/* Add to Cart Modal */}
-      <Modal show={showAddToCartModal} onHide={() => setShowAddToCartModal(false)} centered>
+      <Modal
+        show={showAddToCartModal}
+        onHide={() => setShowAddToCartModal(false)}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add to Cart</Modal.Title>
         </Modal.Header>
@@ -692,27 +731,29 @@ const MasalaPastes = () => {
                   height: "80px",
                   objectFit: "cover",
                   borderRadius: "8px",
-                  marginRight: "15px"
+                  marginRight: "15px",
                 }}
                 onError={(e) => {
-                  e.target.src = '/placeholder-image.jpg';
+                  e.target.src = "/placeholder-image.jpg";
                 }}
               />
               <div>
                 <h6 className="mb-1">{selectedProduct.name}</h6>
-                <p className="mb-1 text-muted small">{selectedProduct.weight}</p>
+                <p className="mb-1 text-muted small">
+                  {selectedProduct.weight}
+                </p>
                 <h5 className="text-danger mb-0">
                   ₹{selectedProduct.price.toFixed(2)}
                 </h5>
               </div>
             </div>
           )}
-          
+
           <div className="d-flex align-items-center justify-content-between mb-3">
             <h6 className="mb-0">Quantity:</h6>
             <div className="d-flex align-items-center">
-              <Button 
-                variant="outline-secondary" 
+              <Button
+                variant="outline-secondary"
                 size="sm"
                 onClick={() => handleQuantityChange(quantity - 1)}
                 disabled={quantity <= 1}
@@ -724,15 +765,17 @@ const MasalaPastes = () => {
                 min="1"
                 max="20"
                 value={quantity}
-                onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 1)}
+                onChange={(e) =>
+                  handleQuantityChange(parseInt(e.target.value) || 1)
+                }
                 style={{
                   width: "60px",
                   textAlign: "center",
-                  margin: "0 10px"
+                  margin: "0 10px",
                 }}
               />
-              <Button 
-                variant="outline-secondary" 
+              <Button
+                variant="outline-secondary"
                 size="sm"
                 onClick={() => handleQuantityChange(quantity + 1)}
                 disabled={quantity >= 20}
@@ -741,7 +784,7 @@ const MasalaPastes = () => {
               </Button>
             </div>
           </div>
-          
+
           <div className="d-flex justify-content-between align-items-center mt-4">
             <span className="fw-bold">Total:</span>
             <span className="fw-bold text-danger fs-5">
@@ -750,7 +793,10 @@ const MasalaPastes = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowAddToCartModal(false)}>
+          <Button
+            variant="secondary"
+            onClick={() => setShowAddToCartModal(false)}
+          >
             Cancel
           </Button>
           <Button variant="danger" onClick={confirmAddToCart}>

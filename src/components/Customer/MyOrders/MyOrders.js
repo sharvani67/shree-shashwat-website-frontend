@@ -84,26 +84,26 @@ function MyOrders() {
         navigate(`/trackingordersDetails/${orderId}`);
     };
 
-    const handleCancelOrder = async (shiprocketOrderId) => {
-        const confirmCancel = window.confirm('Are you sure you want to cancel this order?');
-        if (!confirmCancel) return;
+    // const handleCancelOrder = async (shiprocketOrderId) => {
+    //     const confirmCancel = window.confirm('Are you sure you want to cancel this order?');
+    //     if (!confirmCancel) return;
 
-        try {
-            const response = await axios.post(`${baseURL}/api/cancel-order`, {
-                ids: [shiprocketOrderId] // Send as an array
-            });
+    //     try {
+    //         const response = await axios.post(`${baseURL}/api/cancel-order`, {
+    //             ids: [shiprocketOrderId] // Send as an array
+    //         });
 
-            if (response.data.success) {
-                alert('Order cancelled successfully');
-                fetchCurrentUserOrders(); // Refresh the order list
-            } else {
-                alert('Failed to cancel order');
-            }
-        } catch (error) {
-            console.error('Cancel Order Error:', error);
-            alert('Error cancelling order');
-        }
-    };
+    //         if (response.data.success) {
+    //             alert('Order cancelled successfully');
+    //             fetchCurrentUserOrders(); // Refresh the order list
+    //         } else {
+    //             alert('Failed to cancel order');
+    //         }
+    //     } catch (error) {
+    //         console.error('Cancel Order Error:', error);
+    //         alert('Error cancelling order');
+    //     }
+    // };
 
 
     if (!currentUser) {
@@ -196,7 +196,7 @@ function MyOrders() {
                                                 Tracking
                                             </button>
 
-                                            {order.status.toLowerCase() !== 'cancelled' &&
+                                            {/* {order.status.toLowerCase() !== 'cancelled' &&
                                                 order.status.toLowerCase() !== 'delivered' && (
                                                     <button
                                                         className="btn btn-outline-danger btn-sm my-orders-cancel-btn"
@@ -204,7 +204,7 @@ function MyOrders() {
                                                     >
                                                         Cancel Order
                                                     </button>
-                                                )}
+                                                )} */}
 
                                             {order.status.toLowerCase() === 'delivered' && (
                                                 order.feedback ? (
