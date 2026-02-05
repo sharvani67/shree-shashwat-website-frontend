@@ -227,20 +227,7 @@ export default function Viewdetails() {
     }
   };
 
-  const handleBuyClick = async (productId) => {
-    if (!selectedWeightOption) {
-      alert('Please select a weight option for the product.');
-      return;
-    }
 
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
-      navigate(`/buynow/${productId}`, { state: { selectedWeightOption } });
-    } catch (error) {
-      console.error('Shiprocket login error:', error);
-      alert('Shiprocket login failed!');
-    }
-  };
 
 
   const addToWishlist = async (product) => {
@@ -478,7 +465,6 @@ export default function Viewdetails() {
                 Add to Cart
               </button>
               <button className="btn btn-warning flex-fill"
-                // onClick={() => handleBuyClick(id)} 
                 disabled={!selectedWeightOption}>
                 Buy Now
               </button>

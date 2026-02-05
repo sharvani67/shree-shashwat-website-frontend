@@ -33,12 +33,9 @@ const CheckoutPage = () => {
   });
   const [selectedAddress, setSelectedAddress] = useState('new');
   const [saveToAccount, setSaveToAccount] = useState(false);
-  const [courierOptions, setCourierOptions] = useState([]);
-  const [cheapestCourier, setCheapestCourier] = useState(null);
   const [shippingPrice, setShippingPrice] = useState(0);
   const [codeCharge, setCodChargePrice] = useState(0);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Prepaid');
-
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -69,16 +66,12 @@ const CheckoutPage = () => {
     const fetchCartItems = async () => {
       if (currentUser?.uid) {
         try {
-          // Fetch cart items from your API
           const response = await fetch(`${baseURL}/cart-items/customer/${currentUser.uid}`);
-
           if (!response.ok) {
             throw new Error('Failed to fetch cart items');
           }
-
           const data = await response.json();
 
-          // Process the API response to match your expected cart item structure
           const processedItems = data.map(item => ({
             ...item,
             price: parseFloat(item.price) || 0,
@@ -90,7 +83,6 @@ const CheckoutPage = () => {
           }));
 
           setCartItems(processedItems);
-          console.log("Fetched and processed cart items:", processedItems);
         } catch (error) {
           console.error("Error fetching cart items:", error);
           setCartItems([]);
@@ -109,7 +101,6 @@ const CheckoutPage = () => {
             image: item.image,
           }));
           setCartItems(processedItems);
-          console.log("Fetched guest cart items:", processedItems);
         } catch (error) {
           console.error("Error parsing guest cart items from localStorage:", error);
           setCartItems([]);
@@ -122,26 +113,15 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     const fetchAddresses = async () => {
-      console.log('Starting address fetch...'); // Log 1: Process started
-
       if (currentUser?.uid) {
-        console.log('Current user UID:', currentUser.uid); // Log 2: User ID verification
-
         try {
-          console.log('Making API request...'); // Log 3: Before API call
           const response = await fetch(`${baseURL}/addresses/${currentUser.uid}`);
-
-          console.log('API response status:', response.status); // Log 4: Response status
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
 
           const addressData = await response.json();
-          console.log('Raw API response data:', addressData); // Log 5: Raw data
-
           const addresses = Array.isArray(addressData) ? addressData : [addressData];
-          console.log('Processed addresses array:', addresses); // Log 6: After array conversion
-
           const formattedAddresses = addresses.map(addr => ({
             address_id: addr.address_id || addr.id.toString(),
             addressLine1: addr.addressLine1,
@@ -157,25 +137,18 @@ const CheckoutPage = () => {
             phone: addr.phone
           }));
 
-          console.log('Formatted addresses:', formattedAddresses); // Log 7: Final formatted data
-
           setAllAddresses(formattedAddresses);
           setHasAddresses(formattedAddresses.length > 0);
 
           const defaultAddr = formattedAddresses.find(addr => addr.isDefault);
-          console.log('Default address found:', defaultAddr); // Log 8: Default address check
-
           setDefaultAddress(defaultAddr || null);
 
           if (!defaultAddr && formattedAddresses.length > 0) {
-            console.log('Setting first address as default'); // Log 9: Fallback default
             setDefaultAddress(formattedAddresses[0]);
           }
 
           if (formattedAddresses.length > 0) {
             const addressToSelect = defaultAddr || formattedAddresses[0];
-            console.log('Address to select:', addressToSelect); // Log 10: Selection info
-
             setSelectedAddress(addressToSelect.address_id);
             setFormData({
               addressLine1: addressToSelect.addressLine1 || '',
@@ -190,11 +163,9 @@ const CheckoutPage = () => {
         } catch (error) {
           console.error("Error fetching addresses:", error);
         } finally {
-          console.log('Finished address fetch attempt'); // Log 11: Final state
           setLoadingAddress(false);
         }
       } else {
-        console.log('No current user UID available'); // Log 12: No user case
         setLoadingAddress(false);
         setHasAddresses(false);
         setAllAddresses([]);
@@ -214,80 +185,23 @@ const CheckoutPage = () => {
     setFormData(updatedFormData);
   };
 
+  // Simplified shipping calculation - you can adjust this logic as needed
   useEffect(() => {
-    if (formData.postalCode && formData.postalCode.length === 6 && cartItems) {
-      fetchCourierServiceability(formData.postalCode);
-    }
-  }, [formData.postalCode, cartItems]);
-
-  const parseWeightInGrams = (weightStr) => {
-    if (!weightStr) return 0;
-    const match = weightStr.match(/(\d+(\.\d+)?)/);
-    if (!match) return 0;
-    return parseFloat(match[1]);
-  };
-
-  const calculateTotalWeightInKg = (cartItems) => {
-    const totalGrams = cartItems.reduce((sum, item) => {
-      const weightPerItem = parseWeightInGrams(item.weight);
-      return sum + (weightPerItem * (item.quantity || 1));
-    }, 0);
-
-    return totalGrams / 1000; // convert grams to kg
-  };
-
-
-  const fetchCourierServiceability = async (delivery_postcode) => {
-    if (!delivery_postcode || delivery_postcode.length !== 6) return;
-
-    try {
-      const declaredValue = calculateFinalTotal();
-      const weightInKg = calculateTotalWeightInKg(cartItems);
-
-      console.log("Total Cart Weight in Kg:", weightInKg);
-
-      const response = await axios.post(`${baseURL}/api/shiprocket/serviceability`, {
-        pickup_postcode: '562109',
-        delivery_postcode: delivery_postcode,
-        weight: weightInKg,
-        declared_value: declaredValue
-      });
-
-      const courierList = response.data?.data?.available_courier_companies || [];
-
-      if (courierList.length > 0) {
-        setCourierOptions(courierList);
-
-        const simplifiedCourierData = courierList.map(courier => ({
-          courier_name: courier.courier_name,
-          estimated_delivery_days: courier.estimated_delivery_days,
-          etd: courier.etd,
-          etd_hours: courier.etd_hours,
-          freight_charge: courier.freight_charge,
-          cod_charges: courier.cod_charges
-        }));
-
-        // console.log("🚛 Simplified Courier Data:", simplifiedCourierData);
-
-        // 🔍 Find the cheapest courier
-        const cheapestCourier = courierList.reduce((min, curr) =>
-          Number(curr.freight_charge) < Number(min.freight_charge) ? curr : min
-        );
-
-        setCheapestCourier(cheapestCourier);
-        setShippingPrice(cheapestCourier.freight_charge);
-        setCodChargePrice(cheapestCourier.cod_charges);
-        console.log("CheapestCourier=", cheapestCourier)
+    if (formData.postalCode && formData.postalCode.length === 6) {
+      // Simple shipping calculation based on total quantity
+      const totalQuantity = cartItems.reduce((acc, item) => acc + Number(item.quantity), 0);
+      
+      if (totalQuantity >= 4) {
+        setShippingPrice(0); // Free shipping for 4+ items
       } else {
-        setCourierOptions([]);
-        setCheapestCourier(null);
-        console.warn('⚠️ No available couriers found.');
+        // You can implement your own shipping logic here
+        setShippingPrice(99); // Fixed shipping price for less than 4 items
       }
-
-    } catch (error) {
-      console.error('❌ Shiprocket API error:', error.response?.data || error.message);
+      
+      // Fixed COD charges (adjust as needed)
+      setCodChargePrice(selectedPaymentMethod === 'COD' ? 29 : 0);
     }
-  };
+  }, [formData.postalCode, cartItems, selectedPaymentMethod]);
 
   const calculateTotal = () => {
     return cartItems
@@ -316,82 +230,10 @@ const CheckoutPage = () => {
   const calculateFinalTotal = () => {
     const total = parseFloat(calculateTotal());
     const discount = parseFloat(calculateDiscount());
-    const totalQuantity = cartItems.reduce((acc, item) => acc + Number(item.quantity), 0);
-    let shipping = 0;
-    if (totalQuantity < 4 && cheapestCourier) {
-      shipping = parseFloat(cheapestCourier.freight_charge);
-    }
-    const codCharges = (selectedPaymentMethod === 'COD' && cheapestCourier)
-      ? parseFloat(cheapestCourier.cod_charges)
-      : 0;
+    const shipping = parseFloat(shippingPrice) || 0;
+    const codCharges = selectedPaymentMethod === 'COD' ? parseFloat(codeCharge) || 0 : 0;
+    
     return (total - discount + shipping + codCharges).toFixed(2);
-  };
-
-  const createPhonePeOrder = async (amount) => {
-    try {
-      const requestBody = {
-        amount: amount * 100,
-        currency: "INR"
-      };
-
-      const response = await axios.post(`${baseURL}/create-order`, requestBody, {
-        headers: { 'Content-Type': 'application/json' }
-      });
-
-      const { checkoutPageUrl, merchantOrderId } = response.data;
-
-      if (checkoutPageUrl && merchantOrderId) {
-        // ✅ Open payment in new window
-        const paymentWindow = window.open(checkoutPageUrl, '_blank');
-
-        // ✅ Poll for payment status every 3 seconds
-        const checkInterval = setInterval(async () => {
-          try {
-            const statusRes = await axios.get(`${baseURL}/check-status`, {
-              params: { merchantOrderId }
-            });
-
-            const status = statusRes.data.status;
-            console.log("Current Payment Status:", status);
-
-            if (status === "COMPLETED") {
-              clearInterval(checkInterval);
-              paymentWindow?.close();
-              setIsProcessingOrder(true);
-              // await createOrderInDatabase(merchantOrderId, amount, userId, userEmail, userFullName, userPhone);
-              setTimeout(async () => {
-                await createOrderInDatabase(
-                  merchantOrderId,
-                  amount,
-                  "Paid",
-                  formData,
-                  cartItems,
-                  currentUser,
-                  saveToAccount,
-                  navigate,
-                  refreshCart,
-                  calculateTotal,     // ✅ make sure you're passing it
-                  calculateDiscount,
-                  shippingPrice
-                );
-              }, 2000);
-              // alert("Payment successful!");
-            } else if (status === "FAILED") {
-              clearInterval(checkInterval);
-              paymentWindow?.close();
-              setIsProcessingOrder(false);
-              alert("Payment failed. Please try again.");
-            }
-          } catch (err) {
-            console.error("Error checking payment status:", err);
-          }
-        }, 3000);
-      } else {
-        throw new Error("Missing checkout URL or order ID");
-      }
-    } catch (err) {
-      console.error("Error creating PhonePe order:", err);
-    }
   };
 
   const handlePlaceOrder = async () => {
@@ -417,7 +259,6 @@ const CheckoutPage = () => {
     }
 
     const phoneToValidate = formData.phone || currentUser?.phone || '';
-
     if (!/^\d{10}$/.test(phoneToValidate)) {
       alert('Phone number must be exactly 10 digits.');
       return;
@@ -446,7 +287,23 @@ const CheckoutPage = () => {
           codeCharge
         );
       } else {
-        await createPhonePeOrder(amount);
+        // For Prepaid orders
+        const orderId = `PREPAID-${uuidv4()}`;
+        await createOrderInDatabase(
+          orderId,
+          amount,
+          'Paid',
+          formData,
+          cartItems,
+          currentUser,
+          saveToAccount,
+          navigate,
+          refreshCart,
+          calculateTotal,
+          calculateDiscount,
+          shippingPrice,
+          codeCharge
+        );
       }
 
     } catch (error) {
@@ -457,11 +314,10 @@ const CheckoutPage = () => {
     }
   };
 
-
   const createOrderInDatabase = async (
-    paymentId,
+    orderId,
     amount,
-    paymentMethod,
+    paymentStatus,
     formData,
     cartItems,
     currentUser,
@@ -476,10 +332,6 @@ const CheckoutPage = () => {
     setIsProcessingOrder(true);
 
     try {
-      const weightInKg = calculateTotalWeightInKg(cartItems);
-      // const createdAt = new Date();
-      const orderId = Math.floor(1000000000 + Math.random() * 9000000000).toString();
-
       const shippingAddress = {
         addressLine1: formData.addressLine1 || '',
         addressLine2: formData.addressLine2 || '',
@@ -493,7 +345,6 @@ const CheckoutPage = () => {
         addressLabel: formData.addressLabel || 'Home'
       };
 
-      // 🔄 Support multiple items (from cart or single product)
       const orderItems = cartItems.map(item => ({
         order_item_id: uuidv4(),
         product_id: item.id,
@@ -505,83 +356,10 @@ const CheckoutPage = () => {
         image: item.image || '',
       }));
 
-      const shiprocketOrderItems = orderItems.map(orderItem => ({
-        name: orderItem.name || '',
-        sku: orderItem.product_id || '',
-        units: orderItem.quantity || 1,
-        selling_price: orderItem.price || 0
-      }));
-
       const total_price = calculateTotal();
       const discount_amt = calculateDiscount();
       const total_quantity = cartItems.reduce((acc, item) => acc + Number(item.quantity), 0);
-      const per_unit_discount = total_quantity > 0 ? (discount_amt / total_quantity) : 0;
-      // 🚚 Prepare Shiprocket order payload
-      const orderDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-      const [firstName, ...lastArr] = shippingAddress.fullName.split(' ');
-      const lastName = lastArr.join(' ') || '-';
-      let shipping_charges = 0;
-
-      if (total_quantity >= 4) {
-        shipping_charges = selectedPaymentMethod === "COD"
-          ? codeCharge
-          : 0;
-      } else {
-        shipping_charges = selectedPaymentMethod === "COD"
-          ? shippingPrice + codeCharge
-          : shippingPrice;
-      }
-
       const finalShippingPrice = total_quantity >= 4 ? 0 : shippingPrice;
-
-
-      const shiprocketOrderData = {
-        order_id: orderId,
-        order_date: orderDate,
-        pickup_location: "INFAB AGRO FOODS Factory",
-        comment: "Reseller: M/s " + lastName,
-        billing_customer_name: firstName,
-        billing_last_name: lastName,
-        billing_address: shippingAddress.addressLine1,
-        billing_address_2: shippingAddress.addressLine2,
-        billing_city: shippingAddress.city,
-        billing_pincode: shippingAddress.postalCode,
-        billing_state: shippingAddress.state,
-        billing_country: shippingAddress.country,
-        billing_email: shippingAddress.email,
-        billing_phone: shippingAddress.phone,
-        shipping_is_billing: true,
-        order_items: shiprocketOrderItems,
-        payment_method: selectedPaymentMethod === "COD" ? "COD" : "Prepaid",
-        shipping_charges: shipping_charges,
-        giftwrap_charges: 0,
-        transaction_charges: 0,
-        total_discount: discount_amt,
-        sub_total: total_price,
-        length: 10,
-        breadth: 15,
-        height: 20,
-        weight: weightInKg
-      };
-
-      // 🌐 Call Shiprocket Order API
-      let shiprocketResponse = null;
-      try {
-
-        console.log('📦 Sending Shiprocket Order Data:', shiprocketOrderData);
-
-        const response = await axios.post(`${baseURL}/api/create-order`, shiprocketOrderData);
-        shiprocketResponse = response.data;
-        console.log('Shiprocket order created:', shiprocketResponse);
-      } catch (shiprocketError) {
-        console.error('❌ Shiprocket order creation failed:', shiprocketError);
-      }
-
-      const awbCode = shiprocketResponse?.awb?.response?.data?.awb_code;
-      const labelUrl = shiprocketResponse?.label?.label_url || null;
-      const manifestUrl = shiprocketResponse?.manifest?.manifest_url || null;
-      const invoiceUrl = shiprocketResponse?.printInvoice?.invoice_url || null;
-
 
       // If user is not logged in, create a new account first
       let userId = currentUser?.uid;
@@ -596,10 +374,8 @@ const CheckoutPage = () => {
           email: formData.email,
           password,
           phone: formData.phone,
-          // createdAt: new Date()
         };
 
-        // ✅ Save to MySQL
         const response = await fetch(`${baseURL}/customers`, {
           method: 'POST',
           headers: {
@@ -644,32 +420,21 @@ const CheckoutPage = () => {
         orderId,
         orderItems,
         shippingAddress,
-        paymentId,
         paymentAmount: amount,
-        paymentStatus: selectedPaymentMethod === 'COD' ? 'Pending' : 'Paid',
-        paymentMethod,
+        paymentStatus,
+        paymentMethod: selectedPaymentMethod,
         userId,
         userEmail,
         userFullName,
         userPhone,
-        // createdAt,
         saveToAccount,
         total_price,
         discount_amt,
-        // shipping_price: selectedPaymentMethod === "COD"
-        //   ? shippingPrice + codeCharge
-        //   : shippingPrice,
         cod_charges: selectedPaymentMethod === "COD" ? codeCharge : null,
         shipping_price: finalShippingPrice,
-        shiprocket_order_id: shiprocketResponse?.order?.order_id || null,
-        shipment_id: shiprocketResponse?.order?.shipment_id || null,
-        tracking_id: shiprocketResponse?.awb?.response?.data?.awb_code || null,
-        track_url: shiprocketResponse?.tracking?.[awbCode]?.tracking_data?.track_url || null,
-        labelUrl,
-        manifestUrl,
-        invoiceUrl
       };
-      console.log("orderPayload=", orderPayload)
+
+      console.log("orderPayload=", orderPayload);
 
       const finalResponse = await axios.post(`${baseURL}/api/orders`, orderPayload);
 
@@ -679,7 +444,7 @@ const CheckoutPage = () => {
           shippingAddress.email,
           orderId,
           amount,
-          orderItems // pass all items
+          orderItems
         );
 
         if (!emailSent) {
@@ -697,8 +462,22 @@ const CheckoutPage = () => {
           confirmButtonColor: '#3085d6'
         });
 
+        // Clear cart after successful order
+        if (currentUser?.uid) {
+          // Clear cart from database for logged-in user
+          try {
+            await fetch(`${baseURL}/cart-items/customer/${currentUser.uid}`, {
+              method: 'DELETE'
+            });
+          } catch (error) {
+            console.error('Error clearing cart:', error);
+          }
+        } else {
+          // Clear cart from localStorage for guest user
+          localStorage.removeItem('guest_cart_items');
+        }
+
         navigate('/myorders');
-        window.location.reload();
         refreshCart();
       } else {
         throw new Error('Failed to place order.');
@@ -714,7 +493,6 @@ const CheckoutPage = () => {
   const sendOrderConfirmationEmail = async (email, orderId, amount, items) => {
     console.log('[Email] Starting email sending process...');
 
-    // Validate input data
     if (!email || !orderId || !amount || !items?.length) {
       console.error('[Email] Invalid input data:', { email, orderId, amount, items });
       return false;
@@ -733,14 +511,7 @@ const CheckoutPage = () => {
       customerName: currentUser?.fullName || 'Customer'
     };
 
-    console.log('[Email] Prepared email data:', emailData);
-
     try {
-      // First attempt with fetch
-      console.log('[Email] Attempting to send via fetch...');
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 8000);
-
       const response = await fetch(`${baseURL}/send-order-confirmation`, {
         method: 'POST',
         headers: {
@@ -748,10 +519,7 @@ const CheckoutPage = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify(emailData),
-        signal: controller.signal
       });
-
-      clearTimeout(timeout);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -769,39 +537,6 @@ const CheckoutPage = () => {
 
     } catch (fetchError) {
       console.error('[Email] Fetch attempt failed:', fetchError);
-
-      // Fallback to axios if available
-      if (typeof axios !== 'undefined') {
-        console.log('[Email] Trying fallback with axios...');
-        try {
-          const axiosResponse = await axios.post(
-            `${baseURL}/send-order-confirmation`,
-            emailData,
-            {
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              timeout: 10000
-            }
-          );
-
-          console.log('[Email] Axios response:', axiosResponse.data);
-          return true;
-        } catch (axiosError) {
-          console.error('[Email] Axios attempt failed:', axiosError);
-        }
-      }
-
-      // Final fallback - save for later retry
-      console.log('[Email] Saving failed email for retry...');
-      const failedEmails = JSON.parse(localStorage.getItem('failedEmails') || '[]');
-      failedEmails.push({
-        emailData,
-        timestamp: new Date().toISOString(),
-        error: fetchError.message
-      });
-      localStorage.setItem('failedEmails', JSON.stringify(failedEmails));
-
       return false;
     }
   };
@@ -835,7 +570,6 @@ const CheckoutPage = () => {
         fullName: currentUser?.fullName || formData.fullName || '',
         email: currentUser?.email || formData.email || '',
         phone: currentUser?.phone || formData.phone || '',
-        orderId: formData.orderId || ''
       };
       setFormData(newFormData);
 
@@ -852,7 +586,6 @@ const CheckoutPage = () => {
         fullName: currentUser?.fullName || '',
         email: currentUser?.email || '',
         phone: currentUser?.phone || '',
-        orderId: ''
       });
       setSaveToAccount(false);
 
@@ -869,13 +602,10 @@ const CheckoutPage = () => {
         fullName: currentUser?.fullName || formData.fullName || '',
         email: currentUser?.email || formData.email || '',
         phone: currentUser?.phone || formData.phone || '',
-        orderId: formData.orderId || ''
       };
       setFormData(newFormData);
     }
   };
-
-
 
   const renderAddressCard = (address, isDefault = false) => {
     return (
@@ -931,7 +661,6 @@ const CheckoutPage = () => {
                 <div className="shipping-address-selection mb-4">
                   <h5 className="mb-3 fw-bold">Select Shipping Address</h5>
 
-                  {/* Default address card */}
                   {defaultAddress && (
                     <div
                       className={`address-card mb-3 p-3 rounded ${selectedAddress === defaultAddress.address_id ? 'bg-warning bg-opacity-10 border-warning' : 'bg-white border'}`}
@@ -961,12 +690,10 @@ const CheckoutPage = () => {
                     </div>
                   )}
 
-                  {/* Other saved addresses */}
                   {allAddresses
                     .filter(addr => !addr.isDefault)
                     .map(address => renderAddressCard(address))}
 
-                  {/* New address card */}
                   <div
                     className={`address-card p-3 rounded ${selectedAddress === 'new' ? 'bg-warning bg-opacity-10 border-warning' : 'bg-white border'}`}
                     onClick={() => handleAddressSelection('new')}
@@ -989,7 +716,6 @@ const CheckoutPage = () => {
                   </div>
                 </div>
 
-                {/* Address form for selected address */}
                 {(selectedAddress === 'home' || typeof selectedAddress === 'string') && (
                   <div className="shipping-box p-4 rounded shadow-sm bg-white" >
                     <h5 className="mb-4 shipping-heading">
@@ -1007,7 +733,6 @@ const CheckoutPage = () => {
                               className="form-control bg-light border rounded-3"
                               value={formData.fullName || currentUser?.fullName || ''}
                               onChange={handleInputChange}
-                              // readOnly={!currentUser}
                               required
                             />
                           </div>
@@ -1019,7 +744,6 @@ const CheckoutPage = () => {
                               className="form-control bg-light border rounded-3"
                               value={formData.email || currentUser?.email || ''}
                               onChange={handleInputChange}
-                              // readOnly={!currentUser}
                               required
                             />
                           </div>
@@ -1098,17 +822,6 @@ const CheckoutPage = () => {
                               India
                             </div>
                           </div>
-                          {/* {formData.postalCode && (
-                            <div className="col-md-4">
-                              <label className="form-label shipping-label">Order ID</label>
-                              <input
-                                type="text"
-                                className="form-control bg-light border rounded-3"
-                                value={formData.orderId}
-                                readOnly
-                              />
-                            </div>
-                          )} */}
                         </div>
                         <div className="form-check mb-3">
                           <input
@@ -1152,7 +865,6 @@ const CheckoutPage = () => {
                               className="form-control bg-light border rounded-3"
                               value={formData.fullName || currentUser?.fullName || ''}
                               onChange={handleInputChange}
-                              // readOnly={!currentUser}
                               required
                             />
                           </div>
@@ -1232,17 +944,6 @@ const CheckoutPage = () => {
                               onChange={handleInputChange}
                             />
                           </div>
-                          {/* {formData.postalCode.length === 6 && (
-                            <div className="col-md-4">
-                              <label className="form-label shipping-label">Order ID</label>
-                              <input
-                                type="text"
-                                className="form-control bg-light border rounded-3"
-                                value={formData.orderId || ''}
-                                readOnly
-                              />
-                            </div>
-                          )} */}
                         </div>
                       </>
                     )}
@@ -1288,7 +989,6 @@ const CheckoutPage = () => {
                   </div>
                 </div>
               </div>
-
 
               <h5 className="order-summary-title mb-4">Order Summary</h5>
 
@@ -1386,7 +1086,6 @@ const CheckoutPage = () => {
         <Footer />
       </div>
     </>
-
   );
 };
 

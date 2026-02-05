@@ -10,7 +10,6 @@ import axios from 'axios';
 import baseURL from "../../Api/Api";
 import '../CheckOut/CheckOut.css';
 import Swal from 'sweetalert2';
-import '../CheckOut/CheckOut.css'
 
 const CheckoutPage = () => {
     const { currentUser } = useAuth();
@@ -37,13 +36,10 @@ const CheckoutPage = () => {
         fullName: currentUser?.fullName || '',
         email: currentUser?.email || '',
         phone: currentUser?.phone || '',
-        orderId: ''
     });
     const [selectedAddress, setSelectedAddress] = useState('new');
     const [saveToAccount, setSaveToAccount] = useState(false);
     const [allAddresses, setAllAddresses] = useState([]);
-    const [courierOptions, setCourierOptions] = useState([]);
-    const [cheapestCourier, setCheapestCourier] = useState(null);
     const [shippingPrice, setShippingPrice] = useState(0);
     const [codeCharge, setCodChargePrice] = useState(0);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Prepaid');
@@ -196,80 +192,6 @@ const CheckoutPage = () => {
         setFormData(updatedFormData);
     };
 
-    useEffect(() => {
-        if (formData.postalCode && formData.postalCode.length === 6 && product) {
-            fetchCourierServiceability(formData.postalCode);
-        }
-    }, [formData.postalCode, product]);
-
-    const getWeightInKg = (weightStr) => {
-        if (!weightStr) return 0;
-
-        const match = weightStr.match(/(\d+(\.\d+)?)/);
-        if (!match) return 0;
-
-        const grams = parseFloat(match[1]);
-        return grams / 1000;
-    };
-
-    const fetchCourierServiceability = async (delivery_postcode) => {
-        if (!delivery_postcode || delivery_postcode.length !== 6) return;
-
-        try {
-            const declaredValue = calculateOrderTotal();
-
-            if (!product || !product.weight) {
-                console.warn("Product weight is not available yet. Skipping courier serviceability check.");
-                return;
-            }
-
-            const weightInKg = getWeightInKg(product.weight);
-            console.log("weightInKg=", weightInKg);
-
-            const response = await axios.post(`${baseURL}/api/shiprocket/serviceability`, {
-                pickup_postcode: '562109',
-                delivery_postcode: delivery_postcode,
-                weight: weightInKg,
-                declared_value: declaredValue
-            });
-
-            const courierList = response.data?.data?.available_courier_companies || [];
-
-            if (courierList.length > 0) {
-                setCourierOptions(courierList);
-
-                const simplifiedCourierData = courierList.map(courier => ({
-                    courier_name: courier.courier_name,
-                    estimated_delivery_days: courier.estimated_delivery_days,
-                    etd: courier.etd,
-                    etd_hours: courier.etd_hours,
-                    freight_charge: courier.freight_charge,
-                    cod_charges: courier.cod_charges
-                }));
-
-                console.log("🚛 Simplified Courier Data:", simplifiedCourierData);
-
-                // 🔍 Find the cheapest courier
-                const cheapestCourier = courierList.reduce((min, curr) =>
-                    Number(curr.freight_charge) < Number(min.freight_charge) ? curr : min
-                );
-
-                setCheapestCourier(cheapestCourier);
-                setShippingPrice(cheapestCourier.freight_charge);
-                setCodChargePrice(cheapestCourier.cod_charges);
-                console.log("CheapestCourier=", cheapestCourier)
-            } else {
-                setCourierOptions([]);
-                setCheapestCourier(null);
-                console.warn('⚠️ No available couriers found.');
-            }
-
-        } catch (error) {
-            console.error('❌ Shiprocket API error:', error.response?.data || error.message);
-        }
-    };
-
-
     const calculateTotal = () => {
         if (!product || product.price === undefined) return '0.00';
 
@@ -284,75 +206,10 @@ const CheckoutPage = () => {
 
     const calculateOrderTotal = () => {
         const total = parseFloat(calculateTotal());
-        const shipping = cheapestCourier ? parseFloat(cheapestCourier.freight_charge) : 0;
-        const codCharges = (selectedPaymentMethod === 'COD' && cheapestCourier)
-            ? parseFloat(cheapestCourier.cod_charges)
-            : 0;
+        const shipping = parseFloat(shippingPrice) || 0;
+        const codCharges = selectedPaymentMethod === 'COD' ? parseFloat(codeCharge) || 0 : 0;
 
         return (total + shipping + codCharges).toFixed(2);
-    };
-
-    const createPhonePeOrder = async (amount) => {
-        try {
-            const requestBody = {
-                amount: amount * 100, // Convert to paise
-                currency: "INR"
-            };
-
-            const response = await axios.post(`${baseURL}/create-order`, requestBody, {
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            const { checkoutPageUrl, merchantOrderId } = response.data;
-
-            if (checkoutPageUrl && merchantOrderId) {
-                const paymentWindow = window.open(checkoutPageUrl, '_blank');
-
-                const checkInterval = setInterval(async () => {
-                    try {
-                        const statusRes = await axios.get(`${baseURL}/check-status`, {
-                            params: { merchantOrderId }
-                        });
-
-                        const status = statusRes.data.status;
-                        console.log("Current Payment Status:", status);
-
-                        if (status === "COMPLETED") {
-                            clearInterval(checkInterval);
-                            paymentWindow?.close();
-                            setIsProcessingOrder(true);
-
-                            setTimeout(async () => {
-                                await createOrderInDatabase(
-                                    merchantOrderId,
-                                    amount,
-                                    "Paid",
-                                    formData,
-                                    product,
-                                    currentUser,
-                                    saveToAccount,
-                                    navigate,
-                                    calculateTotal,
-                                    shippingPrice
-                                );
-                            }, 2000);
-                        }
-                        else if (status === "FAILED") {
-                            clearInterval(checkInterval);
-                            paymentWindow?.close();
-                            setIsProcessingOrder(false);
-                            alert("Payment failed. Please try again.");
-                        }
-                    } catch (err) {
-                        console.error("Error checking payment status:", err);
-                    }
-                }, 3000);
-            } else {
-                throw new Error("Missing checkout URL or order ID");
-            }
-        } catch (err) {
-            console.error("Error creating PhonePe order:", err);
-        }
     };
 
     const handlePlaceOrder = async () => {
@@ -373,17 +230,15 @@ const CheckoutPage = () => {
             alert('Phone number must be exactly 10 digits.');
             return;
         }
+
         setIsPlacingOrder(true);
 
         try {
             const amount = calculateOrderTotal();
-            // const paymentMethod = "COD";
-
-
-
-            // For COD orders, directly create order in database
+            
+            // For COD orders
             if (selectedPaymentMethod === "COD") {
-                const orderId = `COD-${uuidv4()}`; // Prefix with COD for identification
+                const orderId = `COD-${uuidv4()}`;
                 await createOrderInDatabase(
                     orderId,
                     amount,
@@ -392,15 +247,21 @@ const CheckoutPage = () => {
                     product,
                     currentUser,
                     saveToAccount,
-                    navigate,
-                    calculateTotal,
-                    shippingPrice,
-                    codeCharge
+                    navigate
                 );
-
             } else {
-                // For non-COD orders, proceed with PhonePe payment
-                await createPhonePeOrder(amount);
+                // For Prepaid orders
+                const orderId = `PREPAID-${uuidv4()}`;
+                await createOrderInDatabase(
+                    orderId,
+                    amount,
+                    'Paid',
+                    formData,
+                    product,
+                    currentUser,
+                    saveToAccount,
+                    navigate
+                );
             }
 
         } catch (error) {
@@ -412,25 +273,18 @@ const CheckoutPage = () => {
     };
 
     const createOrderInDatabase = async (
-        paymentId,
+        orderId,
         amount,
-        paymentMethod,
+        paymentStatus,
         formData,
         product,
         currentUser,
         saveToAccount,
-        navigate,
-        calculateTotal,
-        shippingPrice,
-        codeCharge
+        navigate
     ) => {
         setIsProcessingOrder(true);
 
         try {
-            const weightInKg = getWeightInKg(product.weight);
-            // const createdAt = new Date();
-            const orderId = Math.floor(1000000000 + Math.random() * 9000000000).toString();
-
             const shippingAddress = {
                 addressLine1: formData.addressLine1 || '',
                 addressLine2: formData.addressLine2 || '',
@@ -457,64 +311,6 @@ const CheckoutPage = () => {
             };
 
             const total_price = calculateTotal();
-            // 🚚 Prepare Shiprocket order payload
-            const orderDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-            const [firstName, ...lastArr] = shippingAddress.fullName.split(' ');
-            const lastName = lastArr.join(' ') || '-';
-
-            const shiprocketOrderData = {
-                order_id: orderId,
-                order_date: orderDate,
-                pickup_location: "INFAB AGRO FOODS Factory",
-                comment: "Reseller: M/s " + lastName,
-                billing_customer_name: firstName,
-                billing_last_name: lastName,
-                billing_address: shippingAddress.addressLine1,
-                billing_address_2: shippingAddress.addressLine2,
-                billing_city: shippingAddress.city,
-                billing_pincode: shippingAddress.postalCode,
-                billing_state: shippingAddress.state,
-                billing_country: shippingAddress.country,
-                billing_email: shippingAddress.email,
-                billing_phone: shippingAddress.phone,
-                shipping_is_billing: true,
-                order_items: [{
-                    name: orderItem.name || '',
-                    sku: orderItem.product_id || '',
-                    units: 1,
-                    selling_price: orderItem.price || 0,
-                }],
-                payment_method: selectedPaymentMethod === "COD" ? "COD" : "Prepaid",
-                shipping_charges: selectedPaymentMethod === "COD"
-                    ? shippingPrice + codeCharge
-                    : shippingPrice,
-                giftwrap_charges: 0,
-                transaction_charges: 0,
-                total_discount: 0,
-                sub_total: total_price,
-                length: 10,
-                breadth: 15,
-                height: 20,
-                weight: weightInKg
-            };
-
-
-            // 🌐 Call Shiprocket Order API
-            let shiprocketResponse = null;
-            try {
-                const response = await axios.post(`${baseURL}/api/create-order`, shiprocketOrderData);
-                shiprocketResponse = response.data;
-                console.log('Shiprocket order created:', shiprocketResponse);
-            } catch (shiprocketError) {
-                console.error('❌ Shiprocket order creation failed:', shiprocketError);
-            }
-
-
-            const awbCode = shiprocketResponse?.awb?.response?.data?.awb_code;
-            const labelUrl = shiprocketResponse?.label?.label_url || null;
-            const manifestUrl = shiprocketResponse?.manifest?.manifest_url || null;
-            const invoiceUrl = shiprocketResponse?.printInvoice?.invoice_url || null;
-
 
             // If user is not logged in, create a new account first
             let userId = currentUser?.uid;
@@ -529,7 +325,6 @@ const CheckoutPage = () => {
                     email: formData.email,
                     password,
                     phone: formData.phone,
-                    // createdAt: new Date()
                 };
 
                 // ✅ Save to MySQL
@@ -577,26 +372,17 @@ const CheckoutPage = () => {
                 orderId,
                 orderItem,
                 shippingAddress,
-                paymentId,
                 paymentAmount: amount,
-                paymentStatus: selectedPaymentMethod === 'COD' ? 'Pending' : 'Paid',
-                paymentMethod,
+                paymentStatus,
+                paymentMethod: selectedPaymentMethod,
                 userId,
                 userEmail,
                 userFullName,
                 userPhone,
-                // createdAt,
                 saveToAccount,
                 total_price,
                 shipping_price: shippingPrice,
                 cod_charges: selectedPaymentMethod === "COD" ? codeCharge : null,
-                shiprocket_order_id: shiprocketResponse?.order?.order_id || null,
-                shipment_id: shiprocketResponse?.order?.shipment_id || null,
-                tracking_id: shiprocketResponse?.awb?.response?.data?.awb_code || null,
-                track_url: shiprocketResponse?.tracking?.[awbCode]?.tracking_data?.track_url || null,
-                labelUrl,
-                manifestUrl,
-                invoiceUrl
             };
 
             const finalResponse = await axios.post(`${baseURL}/api/orders`, orderPayload);
@@ -655,7 +441,7 @@ const CheckoutPage = () => {
                 quantity: orderItem.quantity || 1,
                 price: parseFloat(String(orderItem.price).replace(/[^\d.]/g, '')).toFixed(2),
                 weight: orderItem.weight || '',
-                image: orderItem.imageUrl || '' // Add image if available
+                image: orderItem.imageUrl || ''
             }],
             customerName: currentUser?.fullName || formData.fullName || 'Customer',
             shippingAddress: {
@@ -672,11 +458,6 @@ const CheckoutPage = () => {
         console.log('[Email] Prepared email data:', emailData);
 
         try {
-            // First attempt with fetch
-            console.log('[Email] Attempting to send via fetch...');
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 8000);
-
             const response = await fetch(`${baseURL}/send-order-confirmation`, {
                 method: 'POST',
                 headers: {
@@ -684,10 +465,7 @@ const CheckoutPage = () => {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify(emailData),
-                signal: controller.signal
             });
-
-            clearTimeout(timeout);
 
             if (!response.ok) {
                 const errorText = await response.text();
@@ -705,39 +483,6 @@ const CheckoutPage = () => {
 
         } catch (fetchError) {
             console.error('[Email] Fetch attempt failed:', fetchError);
-
-            // Fallback to axios if available
-            if (typeof axios !== 'undefined') {
-                console.log('[Email] Trying fallback with axios...');
-                try {
-                    const axiosResponse = await axios.post(
-                        `${baseURL}/send-order-confirmation`,
-                        emailData,
-                        {
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            timeout: 10000
-                        }
-                    );
-
-                    console.log('[Email] Axios response:', axiosResponse.data);
-                    return true;
-                } catch (axiosError) {
-                    console.error('[Email] Axios attempt failed:', axiosError);
-                }
-            }
-
-            // Final fallback - save for later retry
-            console.log('[Email] Saving failed email for retry...');
-            const failedEmails = JSON.parse(localStorage.getItem('failedEmails') || '[]');
-            failedEmails.push({
-                emailData,
-                timestamp: new Date().toISOString(),
-                error: fetchError.message
-            });
-            localStorage.setItem('failedEmails', JSON.stringify(failedEmails));
-
             return false;
         }
     };
@@ -771,7 +516,6 @@ const CheckoutPage = () => {
                 fullName: currentUser?.fullName || formData.fullName || '',
                 email: currentUser?.email || formData.email || '',
                 phone: currentUser?.phone || formData.phone || '',
-                orderId: formData.orderId || ''
             };
             setFormData(newFormData);
 
@@ -788,7 +532,6 @@ const CheckoutPage = () => {
                 fullName: currentUser?.fullName || '',
                 email: currentUser?.email || '',
                 phone: currentUser?.phone || '',
-                orderId: ''
             });
             setSaveToAccount(false);
 
@@ -805,7 +548,6 @@ const CheckoutPage = () => {
                 fullName: currentUser?.fullName || formData.fullName || '',
                 email: currentUser?.email || formData.email || '',
                 phone: currentUser?.phone || formData.phone || '',
-                orderId: formData.orderId || ''
             };
             setFormData(newFormData);
         }
@@ -941,7 +683,6 @@ const CheckoutPage = () => {
                                                             className="form-control bg-light border rounded-3"
                                                             value={formData.fullName || currentUser?.fullName || ''}
                                                             onChange={handleInputChange}
-                                                            // readOnly={!currentUser}
                                                             required
                                                         />
                                                     </div>
@@ -953,7 +694,6 @@ const CheckoutPage = () => {
                                                             className="form-control bg-light border rounded-3"
                                                             value={formData.email || currentUser?.email || ''}
                                                             onChange={handleInputChange}
-                                                            // readOnly={!currentUser}
                                                             required
                                                         />
                                                     </div>
@@ -1033,18 +773,6 @@ const CheckoutPage = () => {
                                                             India
                                                         </div>
                                                     </div>
-                                                    {/* {formData.postalCode && (
-                                                        <div className="col-md-4">
-                                                            <label className="form-label shipping-label">Order ID</label>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control bg-light border rounded-3"
-                                                                value={formData.orderId}
-                                                                readOnly
-                                                            />
-                                                        </div>
-                                                    )} */}
-
                                                 </div>
 
                                                 <div className="form-check mb-3">
@@ -1089,7 +817,6 @@ const CheckoutPage = () => {
                                                             className="form-control bg-light border rounded-3"
                                                             value={formData.fullName || currentUser?.fullName || ''}
                                                             onChange={handleInputChange}
-                                                            // readOnly={!currentUser}
                                                             required
                                                         />
                                                     </div>
@@ -1168,18 +895,6 @@ const CheckoutPage = () => {
                                                             onChange={handleInputChange}
                                                         />
                                                     </div>
-                                                    {/* {formData.postalCode.length === 6 && (
-                                                        <div className="col-md-4">
-                                                            <label className="form-label shipping-label">Order ID</label>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control bg-light border rounded-3"
-                                                                value={formData.orderId || ''}
-                                                                readOnly
-                                                            />
-                                                        </div>
-                                                    )} */}
-
                                                 </div>
                                             </>
                                         )}

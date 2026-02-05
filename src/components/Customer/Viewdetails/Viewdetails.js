@@ -364,29 +364,15 @@ export default function Viewdetails() {
     }
   };
 
+
+
   const handleBuyClick = async (productId) => {
     if (!selectedWeightOption) {
       alert('Please select a weight option for the product.');
       return;
     }
-
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
-      navigate(`/buynow/${productId}`, { state: { selectedWeightOption } });
-    } catch (error) {
-      console.error('Shiprocket login error:', error);
-      alert('Shiprocket login failed!');
-    }
+    navigate(`/buynow/${productId}`, { state: { selectedWeightOption } });
   };
-
-
-  // const handleBuyClick = async (productId) => {
-  //   if (!selectedWeightOption) {
-  //     alert('Please select a weight option for the product.');
-  //     return;
-  //   }
-  //   navigate(`/buynow/${productId}`, { state: { selectedWeightOption } });
-  // };
 
   const isInWishlist = (productId) => {
     if (currentUser) {

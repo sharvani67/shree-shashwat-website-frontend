@@ -236,46 +236,22 @@ export default function ShoppingCart() {
   };
 
   const handleProceedToCheckout = async () => {
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
-      const checkoutData = {
-        cartItems: cartItems.map(item => ({
-          ...item,
-          price: item.price.toString(),
-          originalPrice: item.originalPrice?.toString() || null,
-          quantity: item.quantity.toString()
-        })),
-        summary: {
-          totalPrice: calculateTotal(), 
-          totalDiscount: calculateDiscount(), 
-          orderTotal: calculateFinalTotal() 
-        }
-      };
-      navigate('/checkout', { state: checkoutData });
-    } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Failed to proceed to checkout. Please try again.');
-    }
-  };
-
-
-  // const handleProceedToCheckout = async () => {
-  //   const checkoutData = {
-  //     cartItems: cartItems.map(item => ({
-  //       ...item,
-  //       price: item.price.toString(),
-  //       originalPrice: item.originalPrice?.toString() || null,
-  //       quantity: item.quantity.toString()
-  //     })),
-  //     summary: {
-  //       totalPrice: calculateTotal(),
-  //       totalDiscount: calculateDiscount(),
-  //       orderTotal: calculateFinalTotal()
-  //     }
-  //   };
+    const checkoutData = {
+      cartItems: cartItems.map(item => ({
+        ...item,
+        price: item.price.toString(),
+        originalPrice: item.originalPrice?.toString() || null,
+        quantity: item.quantity.toString()
+      })),
+      summary: {
+        totalPrice: calculateTotal(),
+        totalDiscount: calculateDiscount(),
+        orderTotal: calculateFinalTotal()
+      }
+    };
     
-  //   navigate('/checkout', { state: checkoutData });
-  // };
+    navigate('/checkout', { state: checkoutData });
+  };
 
 
   if (loading) {
