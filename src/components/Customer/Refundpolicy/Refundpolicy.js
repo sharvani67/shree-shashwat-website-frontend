@@ -15,7 +15,7 @@ const Refundpolicy = () => {
       <div className="Refundpolicy-card shadow-lg rounded-4 border-0">
         <div className="policy-card-header text-white rounded-top p-4">
           <h1 className="mb-0">Refund Policy</h1>
-          <small className="fst-italic">South Sutra - Authentic Masala & Chili Powders</small>
+          <small className="fst-italic">SHREE SHASHWAT RAJ - Authentic Masala & Chili Powders</small>
         </div>
 
         <div className="Refundpolicy-body p-4" style={{ backgroundColor: '#f8f9fa', backgroundImage: 'linear-gradient(to bottom, #f8f9fa, #e9ecef)' }}>
@@ -49,10 +49,12 @@ const Refundpolicy = () => {
 
           <h4 className="mt-4 mb-3 text-color"><FaEnvelope className="me-2" />To start a return:</h4>
           <p>
-            You can contact us at <a href="mailto:contact@southsutra.com" className="text-color text-decoration-underline">contact@southsutra.com</a>. Please note that returns will need to be sent to the following address:
+            You can contact us at <a href="mailto:spmathur56@gmail.com" className="text-color text-decoration-underline">spmathur56@gmail.com</a>. Please note that returns will need to be sent to the following address:
           </p>
           <p>
-            <strong>INFAB AGRO FOODS pvt ltd #125/3 Kanminike Village Hejjala Circle South Taluk Bangalore-562109</strong>
+            <strong> PATNA ROAD, SHREE SHASHWAT RAJ AGRO PVT LTD,
+BHAKHARUAN MORE, DAUDNAGAR,
+AURANGABAD, BIHAR 824113</strong>
           </p>
 
           
@@ -61,7 +63,7 @@ const Refundpolicy = () => {
             Items sent back to us without first requesting a return will not be accepted.
           </p>
           <p>
-            You can always contact us for any return process questions at <a href="mailto:contact@southsutra.com" className="text-color text-decoration-underline">contact@southsutra.com</a>.
+            You can always contact us for any return process questions at <a href="mailto:spmathur56@gmail.com" className="text-color text-decoration-underline">spmathur56@gmail.com</a>.
           </p>
 
           <h4 className="mt-4 mb-3 text-color"><FaRegCheckCircle className="me-2" />Damages and Issues:</h4>
@@ -95,7 +97,7 @@ const Refundpolicy = () => {
           </p>
           <p>
             If more than 15 business days have passed since we’ve approved your return,
-            please contact us at <a href="mailto:contact@southsutra.com" className="text-color text-decoration-underline">contact@southsutra.com</a>.
+            please contact us at <a href="mailto:spmathur56@gmail.com" className="text-color text-decoration-underline">spmathur56@gmail.com</a>.
           </p>
         </div>
 

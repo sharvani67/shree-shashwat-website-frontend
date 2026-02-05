@@ -12,7 +12,7 @@ const TermsAndConditions = () => {
         <div className="card shadow-lg rounded-4 border-0">
           <div className="policy-card-header  text-white rounded-top p-4">
             <h1 className="mb-0">Shipping Policy</h1>
-            <small className="fst-italic">South Sutra - Authentic Masala & Chili Powders</small>
+            <small className="fst-italic">SHREE SHASHWAT RAJ - Authentic Masala & Chili Powders</small>
           </div>
           <div className="card-body p-4" style={{ backgroundColor: '#f8f9fa', backgroundImage: 'linear-gradient(to bottom, #f8f9fa, #e9ecef)' }}>
             <p className="lead">
@@ -67,7 +67,7 @@ const TermsAndConditions = () => {
 
             <h4 className="mt-4 mb-3 text-color"><FaQuestionCircle  className="me-2" />9. Questions</h4>
             <p>
-              If you have any questions about our shipping policy, please feel free to contact us at contact@southsutra.com. Our customer service team is available daily from 9:00 AM to 10:00 PM to assist you.
+              If you have any questions about our shipping policy, please feel free to contact us at spmathur56@gmail.com Our customer service team is available daily from 9:00 AM to 10:00 PM to assist you.
             </p>
           </div>
           <div className="card-footer text-center bg-light rounded-bottom py-3">
