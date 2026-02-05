@@ -4,7 +4,7 @@ import { FaLeaf, FaGlobeAsia } from "react-icons/fa";
 
 const MissionVision = () => {
   return (
-    <section className="mv-section">
+    <section className="mv-section mt-5">
       <div className="mv-container">
         <div className="mv-card mission" data-aos="fade-up">
           <div className="mv-icon">

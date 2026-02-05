@@ -431,15 +431,7 @@ const MasalaPastes = () => {
     fetchWishlistItems();
   }, [currentUser]);
 
-  const handleBuyClick = async (product) => {
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
-      navigate(`/buynow/${product.id}`);
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Shiprocket login failed!');
-    }
-  };
+
 
 
   if (loading) {
@@ -634,7 +626,6 @@ const MasalaPastes = () => {
                         size="sm"
                         className="d-flex align-items-center gap-1 flex-grow-1 justify-content-center"
                         style={{ borderRadius: "20px" }}
-                        // onClick={() => handleBuyClick(product)}
                       >
                         <FaShoppingBag size={14} /> Buy
                       </Button>

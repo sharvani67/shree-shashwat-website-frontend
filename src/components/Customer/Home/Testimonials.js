@@ -10,20 +10,20 @@ import Image5 from '../../../assets/isha.jpeg';
 import Image6 from '../../../assets/gayatri.jpeg';
 
 const testimonials = [
-  {
-    id: 1,
-    name: "Vinutha Deepak Kumar ",
-    title: "Event Planner ",
-    message: "I recently tried South Sutra’s ready-to-use puliyogare masala, and I must say I’m really impressed! The taste is so authentic — it reminds me of the traditional puliyogare we enjoy at home and at temple. I also appreciate that it has no preservatives, which makes it healthier. It’s super convenient and perfect for busy days. Looking forward to trying more products from South Sutra!",
-    avatar: Image4,
-  },
-  {
-    id: 2,
-    name: "Gayathri Gurumurthy ",
-    title: "Zenaray compliance  advisor",
-    message: "South Sutra Pre Mix has become a staple in our home. It’s super easy to whip up and tastes just like something made from scratch—fresh, flavorful, and not overly salty, which we really appreciate. The whole family loves it, and it's a real lifesaver on busy days when we want something quick but still delicious. It’s comforting to know we can rely on it for a homemade taste without all the effort. Definitely something we’ll keep coming back to!",
-    avatar: Image6,
-  },
+  // {
+  //   id: 1,
+  //   name: "Vinutha Deepak Kumar ",
+  //   title: "Event Planner ",
+  //   message: "I recently tried South Sutra’s ready-to-use puliyogare masala, and I must say I’m really impressed! The taste is so authentic — it reminds me of the traditional puliyogare we enjoy at home and at temple. I also appreciate that it has no preservatives, which makes it healthier. It’s super convenient and perfect for busy days. Looking forward to trying more products from South Sutra!",
+  //   avatar: Image4,
+  // },
+  // {
+  //   id: 2,
+  //   name: "Gayathri Gurumurthy ",
+  //   title: "Zenaray compliance  advisor",
+  //   message: "South Sutra Pre Mix has become a staple in our home. It’s super easy to whip up and tastes just like something made from scratch—fresh, flavorful, and not overly salty, which we really appreciate. The whole family loves it, and it's a real lifesaver on busy days when we want something quick but still delicious. It’s comforting to know we can rely on it for a homemade taste without all the effort. Definitely something we’ll keep coming back to!",
+  //   avatar: Image6,
+  // },
   {
     id: 3,
     name: "Sowmya",

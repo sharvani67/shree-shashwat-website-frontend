@@ -144,24 +144,8 @@ const Wishlist = () => {
   };
 
   const handleBuyClick = async (productId) => {
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
-      navigate(`/buynow/${productId}`);
-    } catch (error) {
-      console.error('Login error:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Failed to initiate purchase',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#f76f2f',
-      });
-    }
+    navigate(`/buynow/${productId}`);
   };
-
-  // const handleBuyClick = async (productId) => {
-  //   navigate(`/buynow/${productId}`);
-  // };
 
   if (loading) {
     return <Loading isLoading={loading} />;

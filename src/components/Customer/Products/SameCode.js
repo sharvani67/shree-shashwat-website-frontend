@@ -433,13 +433,7 @@ const MasalaPastes = () => {
   }, [currentUser]);
 
   const handleBuyClick = async (product) => {
-    try {
-      await axios.post(`${baseURL}/shiprocket-login`);
       navigate(`/buynow/${product.id}`);
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Shiprocket login failed!');
-    }
   };
 
 

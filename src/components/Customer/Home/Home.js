@@ -22,19 +22,19 @@ function Home() {
   return (
     <>
       <Header />
-      <WhatApp />
+      {/* <WhatApp /> */}
       <ScrollUp />
       <div className="home-page">
-        <EcommerceCarousel />
+        {/* <EcommerceCarousel /> */}
         <MasalaPastes />
         {/* <FoodOfferPopup /> */}
         
         {/* <FeaturedProducts /> */}
-        <EventOrderSection />
+        {/* <EventOrderSection /> */}
         {/* <BulkOrderSection /> */}
         
         <Testimonials />
-        <JoinWhatsApp />
+        {/* <JoinWhatsApp /> */}
         <Commitment />
       </div>
       <Footer />
