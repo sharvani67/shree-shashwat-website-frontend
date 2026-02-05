@@ -157,8 +157,8 @@ const AboutUs = () => {
       {/* Footer */}
       <section className="cta-section text-center">
         <div className="container">
-          <h2>Ready to Experience Authentic South Indian Flavors?</h2>
-          <p>Join our community of food lovers and bring tradition to your table.</p>
+          <h2>Looking for a Trusted Grocery Partner?</h2>
+          <p>We supply quality groceries to retailers and customers with consistency and care.</p>
           <Link to="/products" className="btn btn-primary">
             Shop Now
           </Link>
