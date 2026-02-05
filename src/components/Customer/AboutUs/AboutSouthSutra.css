@@ -1,0 +1,202 @@
+.about-section {
+  background: 
+              url('../../../assets/bananaleaf.webp') center center/cover no-repeat fixed;
+              
+  padding: 100px 20px;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.about-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.about-container {
+  max-width: 850px;
+  background: rgba(255, 248, 240, 0.96);
+  border-radius: 15px;
+  padding: 50px 40px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4e9b42, #daa520, #b8860b);
+}
+
+.header-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.leaf-decoration {
+  width: 60px;
+  height: 60px;
+  
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+.leaf-decoration.left {
+  margin-right: 20px;
+  transform: rotate(-15deg);
+}
+
+.leaf-decoration.right {
+  margin-left: 20px;
+  transform: rotate(15deg) scaleX(-1);
+}
+
+.title-container {
+  text-align: center;
+}
+
+.about-subheading {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #612a18;
+  font-size: 24px;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+ font-family: 'Sutro', serif;
+
+
+}
+
+.about-heading {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2e2e2e;
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.about-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #b8860b, transparent);
+}
+
+.about-content {
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.about-content p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4d2314;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #541e18;
+  font-weight: 600;
+ 
+}
+
+.signature {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.signature-line {
+  width: 150px;
+  height: 1px;
+  background: #b8860b;
+  margin-left: auto;
+  margin-bottom: 5px;
+}
+
+.signature-text {
+  font-style: italic;
+  color: #b8860b;
+  font-weight: 500;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 15px;
+  }
+  
+  .about-container {
+    padding: 30px 20px;
+  }
+  
+  .header-decoration {
+    flex-direction: column;
+  }
+  
+  .leaf-decoration {
+    margin: 10px 0;
+  }
+  
+  .about-content p::before {
+    display: none;
+  }
+  
+  .about-content {
+    text-align: left;
+  }
+}

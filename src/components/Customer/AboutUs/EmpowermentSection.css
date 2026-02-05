@@ -1,0 +1,129 @@
+.empowerment-section {
+  padding: 60px 20px;
+  background-color: #fef7f5; /* Soft light pink */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.empowerment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.empowerment-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.empowerment-left,
+.empowerment-right {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+
+.empowerment-img-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.empowerment-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.empowerment-img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.empowerment-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background-color: #e6810e; /* Gold */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.empowerment-badge i {
+  font-size: 18px;
+}
+
+.empowerment-header {
+  margin-bottom: 20px;
+}
+
+.empowerment-tag {
+  color: #601f2f; /* Maroon */
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.empowerment-header h2 {
+  color: #3b2f2f; /* Dark maroon */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.empowerment-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #5e4a3c; /* Warm medium brown */
+  margin-bottom: 30px;
+}
+
+.empowerment-stats {
+  display: flex;
+  gap: 40px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff6f61; /* Warm coral */
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .empowerment-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .empowerment-header h2 {
+    font-size: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+}

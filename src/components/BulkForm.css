@@ -1,0 +1,104 @@
+/* Bulk Form Container */
+.bulk-order-form-container {
+  max-width: 700px;
+}
+
+/* Header Styles */
+.bulk-order-form-header-icon {
+  font-size: 2rem;
+  color: #f97316;
+}
+
+.bulk-order-form-header-title {
+  font-weight: bold;
+}
+
+.bulk-order-form-header-subtitle {
+  color: #e67e22;
+}
+
+/* Form Elements */
+.bulk-order-form-label {
+  font-weight: 600;
+  color: #e67e22;
+}
+
+.bulk-order-form-input {
+  border-color: #e67e22;
+}
+
+.bulk-order-form-input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25);
+}
+
+/* Product Selection */
+.bulk-order-form-product-section {
+  background-color: #fae8d8;
+  border-radius: 0.375rem;
+}
+
+.bulk-order-form-product-title {
+  color: #e67e22;
+}
+
+/* Quantity Section */
+.bulk-order-form-quantity-section {
+  background-color: #fae8d8;
+  border-radius: 0.375rem;
+}
+
+.bulk-order-form-quantity-title {
+  color: #e67e22;
+}
+
+/* Submit Button */
+.bulk-order-form-submit-btn {
+  background-color: rgb(203, 98, 50);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.bulk-order-form-submit-btn:hover {
+  background-color: rgb(183, 78, 30);
+}
+
+.mainbulkcard {
+  width:170%;
+  margin-left: -33%;
+}
+
+.custom-checkbox .form-check-input {
+  border: 1px solid #000; /* Thick black border */
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bulk-order-form-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .bulk-order-form-quantity-inputs {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .bulk-order-form-header-icon {
+    font-size: 1.5rem;
+  }
+  
+  .bulk-order-form-header-title {
+    font-size: 1.5rem;
+  }
+  
+  .bulk-order-form-header-subtitle {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,19 @@
+.sticky-offer-strip {
+  width: 100%;
+  background: linear-gradient(to right, #ffb347, #ffcc33);
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 0;
+  position: sticky; /* Or fixed, based on your layout */
+  top: 0;
+  z-index: 10000;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-offer-strip marquee {
+  white-space: nowrap;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}

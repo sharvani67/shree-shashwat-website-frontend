@@ -1,0 +1,795 @@
+.modern-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-slide {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide-image-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%); */
+}
+
+.slide-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.content-left {
+  justify-content: flex-start;
+}
+
+.content-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.content-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.content-inner {
+  max-width: 600px;
+  color: rgb(255, 255, 255);
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+}
+
+.offer-badge {
+  display: inline-block;
+  background: #ff4757;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 20px;
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.4s;
+}
+
+.badge-tail {
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #ff4757;
+}
+
+.slide-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  white-space: normal; 
+  word-spacing: normal;
+}
+
+
+.title-word {
+  display: inline-block;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.title-word:nth-child(1) { animation-delay: 0.5s; }
+.title-word:nth-child(2) { animation-delay: 0.6s; }
+.title-word:nth-child(3) { animation-delay: 0.7s; }
+
+.slide-description {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.8s;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1s;
+}
+
+.stars {
+  display: flex;
+  margin-right: 10px;
+}
+
+.star-filled {
+  color: #ffc107;
+  margin-right: 3px;
+}
+
+.star-empty {
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 3px;
+}
+
+.rating-text {
+  font-size: 0.9rem;
+}
+
+.shop-now-btn {
+  background: white;
+  color: #333;
+  border: none;
+  padding: 12px 30px;
+  font-weight: 600;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1.2s;
+  transition: all 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-icon {
+  margin-right: 10px;
+}
+
+.btn-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.shop-now-btn:hover .btn-underline {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 30px;
+}
+
+.next-btn {
+  right: 30px;
+}
+
+.carousel-pagination {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pagination-dot.active {
+  border-color: transparent;
+}
+
+.dot-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: white;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.pagination-dot.active .dot-fill {
+  transform: scale(0.6);
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modern-carousel-container {
+    height: 60vh;
+  }
+  
+  .slide-title {
+    font-size: 2.5rem;
+  }
+  
+  .slide-description {
+    font-size: 1rem;
+  }
+  
+  .carousel-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .prev-btn {
+    left: 15px;
+  }
+  
+  .next-btn {
+    right: 15px;
+  }
+}
+
+/* Add these to your ModernCarousel.css */
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1s;
+  gap: 10px;
+}
+
+/* For center-aligned content */
+.content-center .rating-container {
+  justify-content: center;
+}
+
+/* For right-aligned content */
+.content-right .rating-container {
+  justify-content: flex-end;
+}
+
+/* For left-aligned content */
+.content-left .rating-container {
+  justify-content: flex-start;
+}
+
+.stars {
+  display: flex;
+}
+
+.star-filled {
+  color: #ffc107;
+  margin-right: 3px;
+}
+
+.star-empty {
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 3px;
+}
+
+.rating-text {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Add these to your ModernCarousel.css */
+
+/* Centered content adjustments */
+.centered-content {
+  max-width: 500px; /* Reduced from 600px */
+  color: #0f0f0f;
+}
+
+.centered-badge {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered-title {
+  font-size: 2.8rem; /* Reduced from 3.5rem */
+}
+
+.centered-description {
+  font-size: 1.1rem; /* Reduced from 1.2rem */
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered-rating {
+  justify-content: center;
+  color: #ffffff;
+  
+}
+
+.centered-button {
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+/* Responsive adjustments for centered content */
+@media (max-width: 768px) {
+  .centered-title {
+    font-size: 2rem; /* Reduced from 2.5rem */
+  }
+  
+  .centered-description {
+    font-size: 0.95rem; /* Reduced from 1rem */
+  }
+  
+  .centered-content {
+    max-width: 90%;
+  }
+}
+
+/* Centered content grouping */
+.content-group {
+  transition: all 0.3s ease;
+}
+
+.centered-group {
+  transform: translateY(-20px);
+  margin-bottom: 10px;
+}
+
+.centered-button {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(10px);
+}
+
+/* Adjust animation starting positions for centered content */
+.content-center .slide-title,
+.content-center .slide-description,
+.content-center .rating-container {
+  transform: translateY(0px); /* Start from current adjusted position */
+}
+
+.content-center .shop-now-btn {
+  transform: translateY(30px); /* Start lower for the button */
+  opacity: 0;
+}
+
+/* Animation adjustments for centered content */
+.content-center .offer-badge {
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.4s;
+}
+
+.content-center .title-word {
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.content-center .slide-description {
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.8s;
+}
+
+.content-center .rating-container {
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1s;
+}
+
+.content-center .shop-now-btn {
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1.2s;
+}
+
+
+/* Bulk order styles */
+/* .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.bulk-order-btn {
+  color: white;
+  border: 2px solid white;
+  padding: 10px 25px;
+  font-weight: 600;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1.4s;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.bulk-order-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.bulk-order-content {
+  margin-top: 30px;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1.6s;
+}
+
+.bulk-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.bulk-description {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+
+.centered-bulk {
+  text-align: center;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .bulk-title {
+    font-size: 1.2rem;
+  }
+  
+  .bulk-description {
+    font-size: 0.9rem;
+  }
+}
+
+
+.bulk-order-ad {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+  width: 320px;
+  z-index: 3;
+  animation: slideInRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s;
+  transform: translateX(120%);
+}
+
+.centered-ad {
+  right: 50%;
+  transform: translateX(50%) translateX(120%);
+}
+
+.ad-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border-left: 5px solid #ffc107;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,255,255,0) 60%);
+  z-index: -1;
+}
+
+.ad-badge {
+  background: #ff5722;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ad-title {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
+}
+
+.ad-discount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ff5722;
+  margin: 10px 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.ad-description {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.ad-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.feature-item {
+  color: #444;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.feature-icon {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.ad-button {
+  background: #ffc107;
+  color: #333;
+  border: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 30px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.ad-button:hover {
+  background: #ffb300;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.centered-ad {
+  animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s;
+  transform: translateY(120%);
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(120%);
+  opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .bulk-order-ad {
+    width: 280px;
+    right: 10px;
+    bottom: 10px;
+  }
+  
+  .ad-container {
+    padding: 15px;
+  }
+  
+  .ad-title {
+    font-size: 1.2rem;
+  }
+  
+  .ad-discount {
+    font-size: 2rem;
+  }
+}
+
+
+.bulk-order-widget {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  width: 220px;
+  z-index: 3;
+  animation: slideInLeft 0.5s ease-out forwards;
+  border-left: 4px solid #ff9800;
+}
+
+.bulk-badge {
+  background: #ff5722;
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.bulk-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bulk-offer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bulk-percent {
+  color: #ff5722;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.bulk-minorder {
+  color: #555;
+  font-size: 0.75rem;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.bulk-cta {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.bulk-cta:hover {
+  background: #fb8c00;
+  transform: translateY(-1px);
+}
+
+.cta-icon {
+  margin-left: 5px;
+  font-size: 0.7rem;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .bulk-order-widget {
+    left: 15px;
+    bottom: 15px;
+    width: 180px;
+  }
+  
+  .bulk-percent {
+    font-size: 1rem;
+  }
+} */

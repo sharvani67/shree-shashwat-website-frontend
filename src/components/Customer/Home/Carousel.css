@@ -1,0 +1,374 @@
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  border-radius: 12px;
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); */
+}
+
+/* Carousel Track */
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Carousel Slide */
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.carousel-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Slide Image */
+.carousel-image-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  object-position: center;
+  margin-top: 10px;
+}
+
+.carousel-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  /* background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%); */
+}
+
+/* Slide Content */
+.carousel-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.carousel-content-left {
+  justify-content: flex-start;
+}
+
+.carousel-content-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-content-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.carousel-content-inner {
+  max-width: 600px;
+  color: white;
+}
+
+/* Offer Badge */
+.carousel-offer-badge {
+  display: inline-block;
+  background: #ff4757;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.carousel-badge-tail {
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #ff4757;
+}
+
+/* Slide Title */
+.carousel-slide-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Slide Description */
+.carousel-slide-description {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* Rating */
+.carousel-rating-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.carousel-stars {
+  display: flex;
+}
+
+.carousel-star-filled {
+  color: #ffc107;
+  margin-right: 3px;
+}
+
+.carousel-star-empty {
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 3px;
+}
+
+.carousel-rating-text {
+  font-size: 0.9rem;
+}
+
+/* Rating Position Styles */
+.carousel-rating-right {
+  justify-content: flex-end;
+}
+
+.carousel-rating-center {
+  justify-content: center;
+}
+
+.carousel-rating-left {
+  justify-content: flex-start;
+}
+
+/* Adjust content group for right-aligned reviews */
+.carousel-content-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-content-right .carousel-rating-right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.carousel-content-center .carousel-rating-center {
+  align-self: center;
+  text-align: center;
+}
+
+.carousel-content-left .carousel-rating-left {
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Shop Now Button */
+.carousel-shop-now-btn {
+  background: white;
+  color: #333;
+  border: none;
+  padding: 12px 30px;
+  font-weight: 600;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.carousel-shop-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.carousel-btn-icon {
+  margin-right: 10px;
+}
+
+.carousel-btn-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.carousel-shop-now-btn:hover .carousel-btn-underline {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Navigation Buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev-btn {
+  left: 30px;
+}
+
+.carousel-next-btn {
+  right: 30px;
+}
+
+/* Pagination */
+.carousel-pagination {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.carousel-pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.carousel-pagination-dot.carousel-active {
+  border-color: transparent;
+}
+
+.carousel-dot-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: white;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.carousel-pagination-dot.carousel-active .carousel-dot-fill {
+  transform: scale(0.6);
+}
+
+/* Centered Content Adjustments */
+.carousel-centered-content {
+  text-align: center;
+}
+
+.carousel-centered-badge {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-centered-group {
+  margin-bottom: 20px;
+}
+
+.carousel-centered-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 60vh;
+  }
+  
+  .carousel-slide-title {
+    font-size: 2.5rem;
+  }
+  
+  .carousel-slide-description {
+    font-size: 1rem;
+  }
+  
+  .carousel-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .carousel-prev-btn {
+    left: 15px;
+  }
+  
+  .carousel-next-btn {
+    right: 15px;
+  }
+}
+
+
+/* For mobile devices */
+@media (max-width: 767px) {
+  .carousel-container {
+    height: 50vh; /* Adjust as needed */
+  }
+  
+  .carousel-image {
+    object-fit: cover; /* Ensures images cover the area properly */
+  }
+  
+  .carousel-nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .carousel-pagination-dot {
+    width: 10px;
+    height: 10px;
+  }
+}

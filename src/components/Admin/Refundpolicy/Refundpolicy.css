@@ -1,0 +1,31 @@
+
+.Refundpolicy-card {
+  transition: transform 0.3s ease;
+}
+
+.Refundpolicy-card:hover {
+  transform: translateY(-5px);
+}
+
+.Refundpolicy-header {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.Refundpolicy-body {
+  padding: 1rem;
+}
+
+.Refundpolicy-body h4 {
+  position: relative;
+  padding-bottom: 0.25rem;
+  margin-top: 1rem;
+}
+
+.btn-danger {
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}

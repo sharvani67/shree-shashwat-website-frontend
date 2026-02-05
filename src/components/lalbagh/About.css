@@ -1,0 +1,154 @@
+/* About Section */
+.about2-section {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+/* Container */
+.about2-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Wrapper */
+.about2-wrapper {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .about2-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
+
+/* Content */
+.about2-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about2-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about2-title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+@media (min-width: 768px) {
+  .about2-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.about2-divider {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, #10b981, #f97316);
+  border-radius: 9999px;
+}
+
+.about2-description {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+.about2-description-secondary {
+  color: #4b5563;
+  line-height: 1.75;
+}
+
+/* Stats */
+.about2-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.stat-label {
+  color: #4b5563;
+}
+
+/* Values */
+.about2-values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.value-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(to right, #ecfdf5, #ffedd5);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.value-icon-container {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.value-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.value-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.value-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.value-description {
+  color: #4b5563;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

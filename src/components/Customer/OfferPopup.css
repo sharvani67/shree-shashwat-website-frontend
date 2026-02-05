@@ -1,0 +1,89 @@
+.popup-overlay {
+  position: fixed;
+  top: 30px;;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #fff8f0, #ffe5d9);
+  padding: 12px 12px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 320px; /* reduced from 420px */
+  text-align: center;
+  position: relative;
+  animation: fadeIn 0.4s ease-in-out;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #444;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.popup-content h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #d84315;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+
+
+.popup-image {
+  width: 90%; /* smaller image inside reduced card */
+  height: auto;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 3px solid #ffd0b6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.popup-btn {
+  background: linear-gradient(to right, #ff5722, #ff8a50);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(255, 87, 34, 0.3);
+}
+
+.popup-btn:hover {
+  background: linear-gradient(to right, #e64a19, #ff7043);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

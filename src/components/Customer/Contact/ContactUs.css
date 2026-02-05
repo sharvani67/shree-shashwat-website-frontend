@@ -1,0 +1,139 @@
+
+
+.contact-container {
+  font-family: Arial, sans-serif;
+  color: #6c4e3f;
+}
+
+.contact-title {
+  color:#cc4b00;
+  margin-top: 75px;
+}
+
+.contact-subtitle {
+  color: black;
+}
+
+.contact-heading {
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.contact-details li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* .contact-card-wrapper {
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(6px); 
+  -webkit-backdrop-filter: blur(6px); 
+} */
+
+
+.contact-card-wrapper {
+  /* background: rgba(219, 215, 215, 0.1);  */
+  border-radius: 12px;
+  height:94%;
+  padding: 2rem;
+  backdrop-filter: blur(10px); /* stronger blur for glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(196, 189, 189, 0.8); /* subtle white border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  background-clip: padding-box; /* prevents background bleed */
+}
+
+
+.form-wrapper form {
+    background: rgba(182, 199, 199, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+/* .contact-card {
+  background-color: rgba(0, 0, 0, 0.4); 
+  border: none;
+  border-radius: 12px;
+} */
+
+
+.contact-card {
+background-color: rgba(0, 0, 0, 0.1) !important;
+  border: none;
+  border-radius: 12px;
+  backdrop-filter: blur(5px); /* stronger blur effect */
+  -webkit-backdrop-filter: blur(8px);
+}
+
+form label {
+  font-weight: bold;
+  color: #6c4e3f;
+}
+
+form .form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+.contact-info-box {
+  background-color: #fff6f1;
+  border-left: 4px solid #cc4b00;
+  transition: transform 0.2s ease;
+}
+
+.contact-info-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Make row stack vertically and full width on iPad & mobile */
+@media screen and (max-width: 1025px ) {
+  .contact-container .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-container .col-md-6 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Reorder Get in Touch children */
+  .contact-container .contact-item {
+    width: 100% !important;
+    order: initial;
+  }
+
+  .contact-container .phone {
+    order: 1;
+  }
+
+  .contact-container .email {
+    order: 2;
+  }
+
+  .contact-container .address {
+    order: 3;
+  }
+
+  .contact-container .map {
+    order: 4;
+  }
+
+  /* Contact card (form) full width */
+  .contact-card-wrapper {
+    width: 100% !important;
+  }
+
+  .map-iframe {
+    width: 100% !important;
+  }
+}
+
+

@@ -1,0 +1,246 @@
+.header {
+  position: fixed;
+  top: 5px;
+  left: 0;
+  right: 0;
+  margin-top: 30px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #601f2f;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.logo-image {
+  height: 40px;
+}
+
+.header-logo {
+  font-weight: 800;
+  font-size: 24px;
+  font-family: "Cinzel", serif;
+  letter-spacing: 1px;
+}
+
+.header-nav-items {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header-nav-items .nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-nav-items .nav-link:hover {
+  color: #27bdbe;
+  transform: translateY(-2px);
+}
+
+.header-nav-items .nav-link.active {
+  color: #27bdbe;
+  font-weight: 600;
+}
+
+.header-nav-items .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #27bdbe;
+}
+
+.header-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 2px solid #f4f0f0;
+  color: #601f21;
+  background-color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.header-login-btn:hover {
+  background-color: #437d3e;
+  color: white;
+}
+
+.header-login-btn.active-login {
+  background-color: #601f21;
+  color: white;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.header-cart-count {
+  position: absolute;
+  top: -8px;
+  right: -45px;
+  background: #ed1944;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 5px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+}
+
+.header-wishlist-count {
+  position: absolute;
+  top: -8px;
+  right: -70px;
+  background: #ed1944;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 5px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+}
+
+.dropdown-menu-custom {
+  border-radius: 10px;
+  border: 1px solid #f0e0d6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: #e2e5e5;
+}
+
+.dropdown-item-custom {
+  font-weight: 500;
+  padding: 10px 16px;
+  color: #27bdbe;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.dropdown-item-custom:hover {
+  background-color: #00252a;
+  color: #f9fbfc;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #e8eeef;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* @media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .header-nav-items {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: #601f21;
+    flex-direction: column;
+    padding: 30px;
+    gap: 25px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  .header-nav-items.mobile-menu-open {
+    left: 0;
+  }
+} */
+
+/* Override Bootstrap default active color */
+.dropdown-item-custom.active-dropdown {
+  background-color: #00252a !important;
+  color: #27bdbe !important;
+}
+
+/* Optional: hover effect for all dropdown items */
+.dropdown-item-custom:hover {
+  background-color: #00252a;
+  color: #27bdbe;
+}
+
+@media (max-width: 1025px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .header-nav-items {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 260px;
+    height: 100vh;
+    background-color: #601f21;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px 20px;
+    gap: 20px;
+    transition: all 0.4s ease-in-out;
+    z-index: 1000;
+  }
+
+  .header-nav-items.mobile-menu-open {
+    left: 0;
+  }
+
+  .nav-link,
+  .header-login-btn {
+    width: 100%;
+    font-size: 17px;
+    justify-content: flex-start;
+  }
+
+  .dropdown-container,
+  .dropdown-menu-custom {
+    width: 100%;
+  }
+}
+
+

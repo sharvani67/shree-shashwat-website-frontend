@@ -1,0 +1,52 @@
+.my-orders-container {
+    margin-top: 7%;
+}
+
+.my-orders-title {
+    font-weight: 600;
+}
+
+.my-orders-ids-row {
+    padding: 10px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.order-id-badge {
+    background-color: #ffc107; /* Bootstrap warning color */
+    color: #212529;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.order-id-badge:hover {
+    background-color: #e0a800;
+}
+
+/* Loading and Empty state styles for completeness */
+
+.my-orders-loading {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.my-orders-empty h4 {
+    font-weight: 600;
+    color: #555;
+}
+
+.my-orders-empty p {
+    color: #777;
+}
+
+
+
+.my-orders-card-body {
+    padding: 1rem;
+}

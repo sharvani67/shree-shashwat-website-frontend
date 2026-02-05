@@ -1,0 +1,13 @@
+.floating-spice {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}

@@ -1,0 +1,110 @@
+/* Container for entire login page */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #00252a; /* Changed here */
+  gap: 30px;
+}
+
+
+.login-logo {
+  width: 700px;
+  height: 300px;
+  /* object-fit: contain; */
+}
+
+.login-food {
+  width: 700px;
+  height: 300px; /* reduced height */
+  object-fit: contain;
+  margin-bottom: 120px;
+}
+
+/* Form card */
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-right: 100px; /* 👈 Add space to the right */
+}
+
+/* Form Section */
+.login-form-section {
+  width: 100%;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #3c2c2c;
+}
+
+.login-form label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+}
+
+.login-input {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container input {
+  padding-right: 40px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 35%;
+  right: 14px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #cc4b00;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #b23d00;
+}
+
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link {
+  color: #cc4b00;
+  text-decoration: none;
+  font-weight: bold;
+}

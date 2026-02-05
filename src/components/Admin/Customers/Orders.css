@@ -1,0 +1,15 @@
+.clickable {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.clickable:hover {
+    text-decoration: underline;
+}
+
+.customer-details {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}

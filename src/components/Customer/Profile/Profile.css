@@ -1,0 +1,53 @@
+.cprofilecard1{
+     border-radius: 12px; 
+     max-width : 600px;
+     max-width: 66%;
+          margin-left: 17%;
+}
+
+.cprofilecard2{
+     border-radius: 12px; 
+     max-width : 600px;
+     max-width: 66%;
+          margin-left: 17%;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+.cprofilecard1 {
+    border-radius: 12px;
+    max-width: 600px;
+    max-width: 100%;
+    margin-left: 0%;
+}
+
+.cprofilecard2{
+     border-radius: 12px; 
+     max-width : 600px;
+     max-width: 100%;
+          margin-left: 0%;
+}
+
+}
+
+@media (max-width: 767px) {
+.cprofilecard1 {
+    border-radius: 12px;
+    max-width: 600px;
+    max-width: 100%;
+    margin-left: 0%;
+}
+
+.cprofilecard2{
+     border-radius: 12px; 
+     max-width : 600px;
+     max-width: 100%;
+          margin-left: 0%;
+}
+.cprofileaddress{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+}

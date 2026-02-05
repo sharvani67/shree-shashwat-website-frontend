@@ -1,0 +1,33 @@
+.order-details-page {
+  background: #fdfaf7;
+  color: #333;
+  min-height: 100vh;
+  margin-top: 70px;
+}
+
+.item-img {
+  width: 50px;
+  height: 50px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.cfeedbackcard {
+  margin-left: 771px;
+  margin-top: -108px;
+  margin-bottom: -59px;
+}
+
+
+@media (max-width: 768px) {
+  .cfeedbackcard {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: -45px;
+
+  }
+   .order-items-scroll {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+}

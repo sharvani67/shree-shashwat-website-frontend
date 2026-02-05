@@ -1,0 +1,226 @@
+.testimonial-slider-container {
+  position: relative;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f9f9f9, #fffbea);
+  overflow: hidden;
+}
+
+.testimonial-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Floating spice images */
+.floating-spice {
+  position: absolute;
+  width: 60px;
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-spice:nth-child(1) {
+  top: 5%;
+  left: 10%;
+}
+
+.floating-spice:nth-child(2) {
+  bottom: 10%;
+  right: 15%;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Scrollable area for testimonials on small screens */
+.testimonial-scroll-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.testimonial-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid #98cb4f;
+  transition: transform 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+}
+
+.testimonial-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #98cb4f;
+}
+
+.testimonial-message {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.read-more {
+  color: #4d8950;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.testimonial-message.expanded {
+  -webkit-line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+}
+
+
+.testimonial-name {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-role {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.testimonial-buttons {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.testimonial-buttons button {
+  margin: 0 0.5rem;
+  background-color: #98cb4f;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.testimonial-buttons button:hover {
+  background-color: #7cab3e;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .testimonial-card {
+    width: 85%;
+  }
+
+  .testimonial-title {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-message {
+    font-size: 0.9rem;
+  }
+}
+.testimonial-scroll-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.testimonial-scroll-wrapper.fixed-mode {
+  overflow-x: hidden;
+  flex-wrap: nowrap;
+}
+
+/* Hide scrollbar on mobile */
+.testimonial-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid #98cb4f;
+  transition: transform 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .testimonial-scroll-wrapper.fixed-mode {
+    overflow-x: auto;
+  }
+
+  .testimonial-card {
+    width: 85%;
+  }
+
+  .testimonial-title {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-message {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .testimonial-scroll-wrapper {
+    justify-content: center;
+  }
+
+  .testimonial-card {
+    width: 42vw;
+  }
+}
