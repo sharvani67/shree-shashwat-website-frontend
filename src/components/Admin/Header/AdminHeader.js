@@ -108,12 +108,14 @@
 
 // export default Header;
 
+
+
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'; // ⬅️ import useNavigate
 import { Dropdown } from 'react-bootstrap';
 import './AdminHeader.css';
 import { useAuth } from '../../AuthContext/AuthContext';
-import logo from "../../../assets/logobigger.png";
+// import logo from "../../../assets/logobigger.png";
 import {
   FaHome,
   FaHeart,
@@ -151,7 +153,8 @@ function Header() {
     <>
       <header className="header">
         <div className="header-logo">
-          <img src={logo} alt="South Sutra Logo" className="logo-image" />
+          {/* <img src={logo} alt="South Sutra Logo" className="logo-image" /> */}
+        <span className="logo-text">SHREE SHASHWAT RAJ </span>
         </div>
 
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
