@@ -166,14 +166,7 @@ function Header() {
             <FaThLarge className="icon" />
             <span className="text">Dashboard</span>
           </NavLink>
-          <NavLink to="/home" onClick={toggleMobileMenu} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
-            <FaHome className="icon" />
-            <span className="text">Home</span>
-          </NavLink>
-          <NavLink to="/a-products" onClick={toggleMobileMenu} className={`nav-link ${isProductsActive ? "active" : ""}`}>
-            <FaBox className="icon" />
-            <span className="text">Products</span>
-          </NavLink>
+          
           <NavLink to="/a-customers" onClick={toggleMobileMenu} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
             <FaUser className="icon" />
             <span className="text">Customers</span>

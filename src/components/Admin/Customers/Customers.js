@@ -179,7 +179,7 @@ function Customers() {
                     </Card.Body>
                 </Card>
             </Container>
-            <Footer />
+            
         </>
     );
 }

@@ -268,9 +268,7 @@ function Orders() {
                                             <th>Date</th>
                                             <th>Items</th>
                                             <th>Total</th>
-                                            <th>Label</th>
-                                            <th>Manifest</th>
-                                            <th>Invoice</th>
+                                    
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -319,43 +317,7 @@ function Orders() {
                                                 <td className="order-total">
                                                     ₹{order.payment_amount}
                                                 </td>
-                                                <td>
-                                                    {order.label_order_id && (
-                                                        <a
-                                                            href={`${baseURL}${order.label_order_id}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}
-                                                        >
-                                                            📝 View
-                                                        </a>
-                                                    )}
-                                                </td>
-
-                                                <td>
-                                                    {order.manifest_order_id && (
-                                                        <a
-                                                            href={`${baseURL}${order.manifest_order_id}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}
-                                                        >
-                                                            📝 View
-                                                        </a>
-                                                    )}
-                                                </td>
-                                                <td>
-                                                    {order.invoice_order_id && (
-                                                        <a
-                                                            href={`${baseURL}${order.invoice_order_id}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}
-                                                        >
-                                                            📝 View
-                                                        </a>
-                                                    )}
-                                                </td>
+                                               
                                                 <td>
                                                     <Badge pill bg={getStatusVariant(order.status)} className="status-badge">
                                                         {order.status}
@@ -410,7 +372,7 @@ function Orders() {
                     </Card.Body>
                 </Card>
             </Container>
-            <Footer />
+            
         </>
     );
 }
