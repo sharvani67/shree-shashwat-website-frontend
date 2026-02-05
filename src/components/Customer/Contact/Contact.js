@@ -137,7 +137,7 @@ const ContactUs = () => {
                         rel="noopener noreferrer"
                         className="text-dark text-decoration-none"
                       >
-                        PATNA ROAD, 0, SHREE SHASHWAT RAJ AGRO PVT LTD,
+                        PATNA ROAD, 0, SHREE SHASHWATHRAJ AGRO PVT LTD,
                         BHAKHARUA MORE, DAUDNAGAR, Aurangabad, Bihar 824113
                       </a>
                     </p>

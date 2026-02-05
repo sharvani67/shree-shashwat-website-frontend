@@ -154,7 +154,7 @@ function Header() {
       <header className="header">
         <div className="header-logo">
           {/* <img src={logo} alt="South Sutra Logo" className="logo-image" /> */}
-        <span className="logo-text">SHREE SHASHWAT RAJ </span>
+        <span className="logo-text">SHREE SHASHWATHRAJ </span>
         </div>
 
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
