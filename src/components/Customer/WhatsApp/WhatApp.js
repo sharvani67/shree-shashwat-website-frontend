@@ -4,7 +4,7 @@ import './WhatApp.css';
 const WhatApp = () => {
   return (
     <a
-      href="https://wa.link/6ik9wq" 
+      href="https://wa.link/h1nmlm" 
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp_float"

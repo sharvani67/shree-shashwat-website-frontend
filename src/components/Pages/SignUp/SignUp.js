@@ -144,9 +144,7 @@ function Signup() {
             <div className="signup-wrapper mb-5">
                 <div className="signup-box">
                     <h2 className="signup-title">Create an Account</h2>
-                    <p className="signup-subtext">
-                        Join SutraCart to enjoy a seamless shopping experience.
-                    </p>
+                    
 
                     <form className="signup-form" onSubmit={handleSubmit}>
                         <label>Full Name</label>

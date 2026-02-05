@@ -83,9 +83,12 @@ function Login() {
         <div className="customer-login-box">
           <div className="customer-login-container">
             <div className="customer-login-header">
-              <img src={Logo} alt="Logo" className="customer-login-logo" />
-              <h2 className="customer-login-title">Login</h2>
-            </div>
+  <h1 className="customer-login-brand">
+    Shree Shashwatraj
+  </h1>
+  <h2 className="customer-login-title">Login</h2>
+</div>
+
 
             <div className="customer-login-field">
               <input

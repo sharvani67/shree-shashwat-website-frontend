@@ -61,12 +61,21 @@ function AppContent() {
    // ✅ Track page changes
   usePageTracking();
 
+   const hideStickyOfferRoutes = [
+    "/Login",
+    "/signup",
+    "/forgot-password",
+    "/a-login",
+    "/Lalbagh-flower-show-promotion",
+    "/Lalbagh-flower-show-visitor",
+    "/Lalbagh-flower-show-visitorForm",
+  ];
+
+  const shouldHideStickyOffer = hideStickyOfferRoutes.includes(location.pathname);
+
   return (
     <>
-      {location.pathname !== "/Lalbagh-flower-show-promotion" &&
-        location.pathname !== "/Lalbagh-flower-show-visitor" && 
-       location.pathname !== "/Lalbagh-flower-show-visitorForm" && <StickyOfferStrip />}
-
+       {!shouldHideStickyOffer && <StickyOfferStrip />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Lalbagh-flower-show-promotion" element={<Lalbaghflower />} />

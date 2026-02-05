@@ -638,16 +638,6 @@ const MasalaPastes = () => {
         ))}
       </div> */}
 
-                    <Card.Text
-                      className="text-start"
-                      style={{
-                        fontSize: "0.85rem",
-                        color: "#555",
-                        minHeight: "40px",
-                      }}
-                    >
-                      {product.description}
-                    </Card.Text>
                   </div>
 
                   <div className="mt-auto">
