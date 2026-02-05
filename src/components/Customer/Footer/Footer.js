@@ -356,6 +356,97 @@
 
 
 
+// import React from 'react';
+// import { Container, Row, Col } from 'react-bootstrap';
+// import {
+//   MdOutlineEmail, MdInfoOutline, MdOutlineStore
+// } from "react-icons/md";
+// import {
+//   FaShoppingCart, FaClipboardList, FaUserCircle,
+//   FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaTags 
+// } from "react-icons/fa";
+// import { GrContact, GrLocation } from "react-icons/gr";
+// import { BsTelephone } from "react-icons/bs";
+// import './Footer.css';
+
+// function Footer() {
+//   return (
+//     <footer className="custom-footer fade-in">
+//       <Container>
+//         <Row className="footer-top align-items-start">
+//           <Col xs={12} lg={3} className="footer-col fade-in-up">
+//             <h5 className="footer-heading">SHREE SHASHWAT RAJ </h5>
+//           </Col>
+
+//           <Col xs={12} lg={3} className="footer-col fade-in-up delay-1">
+//             <h5 className="footer-heading">Quick Links</h5>
+//             <ul className="footer-links">
+//               <li><a href="/products"><MdOutlineStore className="footer-icon" /> All Products</a></li>
+//               <li><a href="/about"><MdInfoOutline className="footer-icon" /> About Us</a></li>
+//               <li><a href="/contact"><GrContact className="footer-icon" /> Contact Us</a></li>
+//               <li><a href="/Shoppingcart"><FaShoppingCart className="footer-icon" /> Your Cart</a></li>
+//               <li><a href="/myorders"><FaClipboardList className="footer-icon" /> Order History</a></li>
+//               <li><a href="/login"><FaUserCircle className="footer-icon" /> Login / Sign Up</a></li>
+        
+//             </ul>
+//           </Col>
+
+//           <Col xs={12} lg={3} className="footer-col fade-in-up delay-2">
+//             <h5 className="footer-heading">Contact Us</h5>
+//             <ul className="footer-contact">
+//               <li><MdOutlineEmail className="footer-icon" /> spmathur56@gmail.com</li>
+//               <li><BsTelephone className="footer-icon" /> 9801049700</li>
+//               <li>
+//           <GrLocation className="footer-icon" />
+//           SHREE SHASHWAT RAJ AGRO PVT. LTD,<br />
+//           Patna Road,<br />
+//           Bhakharua More, Daudnagar,<br />
+//           Aurangabad, Bihar - 824113<br />
+//           GSTIN: 10AAOCS1541B1ZZ
+//             </li>
+
+//             </ul>
+
+            
+//           </Col>
+
+//           <Col xs={12} lg={3} className="footer-col fade-in-up delay-4">
+//             <h5 className="footer-heading">Legal</h5>
+//             <ul className="footer-links">
+//               <li><a href="/Termsandconditions">Terms & Conditions</a></li>
+//               <li><a href="/privacypolicy">Privacy Policy</a></li>
+//               <li><a href="/refundpolicy">Refund Policy</a></li>
+//               <li><a href="/shippingpolicy">Shipping Policy</a></li>
+//               <li><a href="/faq">FAQ's</a></li>
+//             </ul>
+            
+//             <h5 className="footer-heading follow-us">Follow Us</h5>
+//             <div className="social-icons">
+//               <a href="https://www.facebook.com/profile.php?id=61576200795479" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+//               <a href="https://www.instagram.com/southsutra_/?next=%2F" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+//               {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a> */}
+//               <a href="https://youtube.com/@southsutra?si=Ygg6_WZEjIAsfQBO" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+//             </div>
+//             <p className="footer-desc social-desc">Stay updated with our latest products and offers.</p>
+//           </Col>
+//         </Row>
+
+//         <hr className="footer-divider" />
+
+//         <Row>
+//           <Col className="text-center">
+//             <p className="footer-copy">&copy; {new Date().getFullYear()} Shree Shaswat Raj. All rights reserved by iiiQBets..</p>
+        
+//           </Col>
+//         </Row>
+//       </Container>
+//     </footer>
+//   );
+// }
+
+// export default Footer;
+
+
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import {
@@ -375,7 +466,13 @@ function Footer() {
       <Container>
         <Row className="footer-top align-items-start">
           <Col xs={12} lg={3} className="footer-col fade-in-up">
-            <h5 className="footer-heading">SHREE SHASHWAT RAJ </h5>
+            <div className="brand-section">
+              <h5 className="footer-brand">SHREE SHASHWAT RAJ</h5>
+              <p className="footer-desc">
+                <strong>SHREE SHASHWAT RAJ AGRO PVT. LTD</strong><br />
+              
+              </p>
+            </div>
           </Col>
 
           <Col xs={12} lg={3} className="footer-col fade-in-up delay-1">
@@ -387,30 +484,27 @@ function Footer() {
               <li><a href="/Shoppingcart"><FaShoppingCart className="footer-icon" /> Your Cart</a></li>
               <li><a href="/myorders"><FaClipboardList className="footer-icon" /> Order History</a></li>
               <li><a href="/login"><FaUserCircle className="footer-icon" /> Login / Sign Up</a></li>
-        
             </ul>
           </Col>
 
           <Col xs={12} lg={3} className="footer-col fade-in-up delay-2">
-            <h5 className="footer-heading">Contact Us</h5>
+            <h5 className="footer-heading">Contact Info</h5>
             <ul className="footer-contact">
               <li><MdOutlineEmail className="footer-icon" /> spmathur56@gmail.com</li>
               <li><BsTelephone className="footer-icon" /> 9801049700</li>
               <li>
-          <GrLocation className="footer-icon" />
-          SHREE SHASHWAT RAJ AGRO PVT. LTD,<br />
-          Patna Road,<br />
-          Bhakharua More, Daudnagar,<br />
-          Aurangabad, Bihar - 824113<br />
-          GSTIN: 10AAOCS1541B1ZZ
-            </li>
-
+                <GrLocation className="footer-icon" />
+                <span>
+                  Patna Road, Bhakharua More,<br />
+                  Daudnagar, Aurangabad,<br />
+                  Bihar - 824113<br />
+                  GSTIN: 10AAOCS1541B1ZZ
+                </span>
+              </li>
             </ul>
-
-            
           </Col>
 
-          <Col xs={12} lg={3} className="footer-col fade-in-up delay-4">
+          <Col xs={12} lg={3} className="footer-col fade-in-up delay-3">
             <h5 className="footer-heading">Legal</h5>
             <ul className="footer-links">
               <li><a href="/Termsandconditions">Terms & Conditions</a></li>
@@ -424,7 +518,6 @@ function Footer() {
             <div className="social-icons">
               <a href="https://www.facebook.com/profile.php?id=61576200795479" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
               <a href="https://www.instagram.com/southsutra_/?next=%2F" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-              {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a> */}
               <a href="https://youtube.com/@southsutra?si=Ygg6_WZEjIAsfQBO" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
             </div>
             <p className="footer-desc social-desc">Stay updated with our latest products and offers.</p>
@@ -435,8 +528,7 @@ function Footer() {
 
         <Row>
           <Col className="text-center">
-            <p className="footer-copy">&copy; {new Date().getFullYear()} Shree Shaswat Raj. All rights reserved by iiiQBets..</p>
-        
+            <p className="footer-copy">&copy; {new Date().getFullYear()} Shree Shaswat Raj. All rights reserved by iiiQBets.</p>
           </Col>
         </Row>
       </Container>

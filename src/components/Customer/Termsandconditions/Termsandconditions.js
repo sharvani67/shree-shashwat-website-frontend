@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
         <div className="card shadow-lg rounded-4 border-0">
           <div className="policy-card-header text-white rounded-top p-4">
             <h1 className="mb-0">Terms of Service</h1>
-            <small className="fst-italic">South Sutra - Authentic Masala & Chili Powders</small>
+            <small className="fst-italic">SHREE SHASHWAT RAJ - Authentic Masala & Chili Powders</small>
           </div>
           <div 
             className="card-body p-4" 
@@ -26,10 +26,10 @@ const TermsAndConditions = () => {
           >
             <h4 className="mt-4 mb-3 text-color"><FaInfoCircle className="me-2" />OVERVIEW</h4>
             <p>
-              This website is operated by INFAB (INFAB AGRO FOODS Pvt Ltd,
-#125/3 Kanminike Village,
-Hejjala Circle South Taluk,
-Bangalore - 562109). Throughout the site, the terms "we", "us" and "our" refer to INFAB (Brand name South Sutra). South Sutra offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+              This website is operated by SHREE SHASHWAT RAJ (
+PATNA ROAD, SHREE SHASHWAT RAJ AGRO PVT LTD,
+BHAKHARUAN MORE, DAUDNAGAR,
+AURANGABAD, BIHAR 824113). Throughout the site, the terms "we", "us" and "our" refer to SHREE SHASHWAT RAJ (Brand name SHREE SHASHWAT RAJ). SHREE SHASHWAT RAJ offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
             </p>
             <p>
               By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions ("Terms of Service", "Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/or contributors of content.
@@ -42,8 +42,8 @@ Bangalore - 562109). Throughout the site, the terms "we", "us" and "our" refer t
             </p>
             <p>
   Our store is hosted on{' '}
-  <a href="https://southsutra.com" target="_blank" rel="noopener noreferrer">
-    https://southsutra.com
+  <a href="https://shreeshashwatraj.com/" target="_blank" rel="noopener noreferrer">
+    https://shreeshashwatraj.com/
   </a>
   . They provide us with the online e-commerce platform that allows us to sell our products and services to you.
 </p>
@@ -97,8 +97,8 @@ Bangalore - 562109). Throughout the site, the terms "we", "us" and "our" refer t
 
             <h4 className="mt-4 mb-3 text-color"><FaShoppingCart className="me-2" />SECTION 5 - PRODUCTS OR SERVICES</h4>
             <p>
-              Certain products or Services may be available exclusively online through the website. These products or Services may have limited quantities and are subject to return or exchange only according to our Refund Policy:   <a href="https://southsutra.com/refundpolicy" target="_blank" rel="noopener noreferrer">
-    https://southsutra.com/refundpolicy
+              Certain products or Services may be available exclusively online through the website. These products or Services may have limited quantities and are subject to return or exchange only according to our Refund Policy:   <a href="https://shreeshashwatraj.com/refundpolicy" target="_blank" rel="noopener noreferrer">
+    https://shreeshashwatraj.com/refundpolicy
   </a>
             </p>
             <p>
@@ -120,8 +120,8 @@ Bangalore - 562109). Throughout the site, the terms "we", "us" and "our" refer t
             </p>
           <p>
   For more details, please review our Refund Policy:&nbsp;
-  <a href="https://southsutra.com/refundpolicy" target="_blank" rel="noopener noreferrer">
-    https://southsutra.com/refundpolicy
+  <a href="https://shreeshashwatraj.com/refundpolicy" target="_blank" rel="noopener noreferrer">
+    https://shreeshashwatraj.com/refundpolicy
   </a>
 </p>
 
@@ -165,10 +165,10 @@ Bangalore - 562109). Throughout the site, the terms "we", "us" and "our" refer t
             <h4 className="mt-4 mb-3 text-color"><FaShieldAlt className="me-2" />SECTION 10 - PERSONAL INFORMATION</h4>
           <p>
   Your submission of personal information through the store is governed by our Privacy Policy, which can be viewed here:{' '}
-  <a href="https://southsutra.com/privacypolicy" target="_blank" rel="noopener noreferrer">
-    https://southsutra.com/privacypolicy
+  <a href="https://shreeshashwatraj.com/privacypolicy" target="_blank" rel="noopener noreferrer">
+    https://shreeshashwatraj.com/privacypolicy
   </a>
-  .
+  
 </p>
 
 

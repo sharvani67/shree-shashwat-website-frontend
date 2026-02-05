@@ -157,7 +157,7 @@ const ContactUs = () => {
                   <iframe
                     title="Google Map"
                     className="map-iframe"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.8726438065314!2d77.42523277454477!3d12.85150131750107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae470e75af475f%3A0xb22c3774f5b66a7b!2sINFAB%20AGRO%20FOODS%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1757151274938!5m2!1sen!2sin"
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d231846.9196017711!2d84.04125009453125!3d24.77462199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398cff58662970c7%3A0x1a3e9474b39665cb!2sSHREE%20SHASHWATRAJ%20AGRO%20PVT%20LTD!5e0!3m2!1sen!2sin!4v1770280963793!5m2!1sen!2sin"
                     width="100%"
                     height="240"
                     style={{ border: "0" }}

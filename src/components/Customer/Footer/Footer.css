@@ -29,6 +29,38 @@
 .delay-3 { animation-delay: 0.6s; }
 .delay-4 { animation-delay: 0.8s; }
 
+/* Brand Section - Centered */
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.footer-brand {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #FFD700;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-brand::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+}
+
 /* Alignment fixes */
 .footer-top {
   align-items: flex-start;
@@ -41,7 +73,7 @@
 }
 
 /* Headings and text */
-.footer-col h5 {
+.footer-heading {
   font-weight: 600;
   margin-bottom: 15px;
   color: #FFD700;
@@ -55,6 +87,7 @@
   color: #d1e0ff;
   line-height: 1.6;
   margin-top: 10px;
+  text-align: center;
 }
 
 .footer-desc strong {
@@ -144,6 +177,7 @@
   font-size: 13px;
   color: #d1e0ff;
   margin-top: 10px;
+  text-align: left;
 }
 
 /* Divider and copyright */
@@ -169,52 +203,6 @@
   font-style: italic;
 }
 
-/* WhatsApp Join Section */
-.whatsapp-join {
-  margin-top: 20px;
-  background: rgba(12, 43, 78, 0.3);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-}
-
-.whatsapp-heading {
-  color: #FFD700;
-  font-size: 17px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.whatsapp-text {
-  font-size: 14px;
-  color: #d1e0ff;
-  margin-bottom: 15px;
-  line-height: 1.5;
-}
-
-.whatsapp-button {
-  display: inline-block;
-  background: linear-gradient(to right, #25D366, #1ebe5d);
-  color: white;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-  border: none;
-  cursor: pointer;
-}
-
-.whatsapp-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
-  text-decoration: none;
-  color: white;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
   .footer-col {
@@ -223,56 +211,68 @@
     padding: 0 15px;
   }
 
-  .footer-desc {
-    font-size: 13px;
-  }
-
-  .footer-col h5 {
-    font-size: 16px;
-  }
-
-  .footer-top {
+  .brand-section {
+    align-items: flex-start;
     text-align: left;
+  }
+  
+  .footer-brand {
+    text-align: left;
+    font-size: 22px;
+  }
+  
+  .footer-brand::after {
+    left: 0;
+    width: 100%;
+  }
+  
+  .footer-desc {
+    text-align: left;
+  }
+
+  .footer-heading {
+    font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .footer-col {
+  .brand-section {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-brand {
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .footer-brand::after {
+    left: 25%;
+    width: 50%;
+  }
+  
+  .footer-desc {
     text-align: center;
   }
 
   .footer-links li,
   .footer-contact li {
-    justify-content: center;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .social-desc {
     text-align: center;
-  }
-
-  .footer-links a {
-    justify-content: center;
-  }
-
-  .footer-contact li {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-icon {
-    margin-right: 0;
-    margin-bottom: 5px;
-  }
-
-  .whatsapp-join {
-    text-align: center;
-  }
-
-  .social-icons {
-    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
   .custom-footer {
     padding: 30px 0 15px;
+  }
+
+  .footer-brand {
+    font-size: 18px;
   }
 
   .footer-col {
@@ -291,23 +291,13 @@
     margin: 20px 0 15px;
   }
 
-  .whatsapp-join {
-    padding: 15px;
-  }
-
-  .whatsapp-button {
-    font-size: 13px;
-    padding: 8px 16px;
-  }
-
   .social-icons a {
     width: 36px;
     height: 36px;
     font-size: 16px;
   }
 
-  .footer-copy,
-  .footer-made {
+  .footer-copy {
     font-size: 13px;
     padding: 0 10px;
   }
