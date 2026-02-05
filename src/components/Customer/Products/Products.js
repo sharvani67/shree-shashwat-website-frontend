@@ -472,7 +472,7 @@ const MasalaPastes = () => {
       <Header />
       <WhatApp />
       <Container className="my-5 py-4" style={{ maxWidth: "1200px" }}>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 mt-5">
           <h1
             className="display-5 fw-bold mb-3"
             style={{
@@ -483,7 +483,7 @@ const MasalaPastes = () => {
               display: "inline-block",
             }}
           >
-            Our Gojju
+            Our Products
             <span
               style={{
                 position: "absolute",
@@ -497,11 +497,11 @@ const MasalaPastes = () => {
               }}
             ></span>
           </h1>
-          <p className="text-muted">
+          {/* <p className="text-muted">
             SouthSutra is not just about food. It's about the feeling you get
             when you eat something made with love-like at home. Simple &
             pure, you can trust us just like your own kitchen.
-          </p>
+          </p> */}
         </div>
 
         <Row className="g-4 justify-content-center">
@@ -759,7 +759,7 @@ const MasalaPastes = () => {
         </Modal.Footer>
       </Modal>
 
-      <BulkOrderSection />
+      {/* <BulkOrderSection /> */}
       <Footer />
     </>
   );

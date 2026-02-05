@@ -550,7 +550,7 @@ const Commitment = () => {
           >
             <QualityIcon color={item.color}>{item.icon}</QualityIcon>
             <QualityTitle>{item.title}</QualityTitle>
-            <QualityDescription>{item.description}</QualityDescription>
+            {/* <QualityDescription>{item.description}</QualityDescription> */}
             {/* <RatingStars>
               {[...Array(5)].map((_, i) => (
                 <FaStar key={i} />

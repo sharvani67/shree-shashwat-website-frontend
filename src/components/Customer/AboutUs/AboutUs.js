@@ -51,16 +51,16 @@ const AboutUs = () => {
     <>
       <Header />
       <WhatApp />
-      <AboutSouthSutra />
-      <WomenEmpowermentSection />
+      {/* <AboutSouthSutra /> */}
+      {/* <WomenEmpowermentSection /> */}
 
       {/* Our Story Section */}
-      <section className="story-section position-relative">
+      {/* <section className="story-section position-relative">
         <img src={LeafSVG} alt="Decorative Leaf" className="svg-decor top-left" />
 
         <div className="container">
           <div className="row align-items-center">
-            {/* Auto-sliding Image Gallery */}
+            
             <motion.div
               className="col-lg-6 mb-5 mb-lg-0"
               initial="hidden"
@@ -109,7 +109,7 @@ const AboutUs = () => {
               </div>
             </motion.div>
 
-            {/* Text Content Section */}
+            
             <motion.div
               className="col-lg-6"
               initial="hidden"
@@ -143,15 +143,15 @@ const AboutUs = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <VisionSection />
       <MissionSection /> */}
       <MissionVission/>
       {/* <MeetTheTeam /> */}
-      <Team/>
+      {/* <Team/>
       <Founder/>
-      <Journey/>
+      <Journey/> */}
       <CoreValuesSection />
       
       {/* Footer */}
