@@ -9,13 +9,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: #601f2f;
+  background-color: #0C2B4E; /* Updated color */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
-.logo-image {
-  height: 40px;
+.logo-text {
+  font-weight: 800;
+  font-size: 20px;
+  font-family: "Cinzel", serif;
+  letter-spacing: 1px;
+  color: white;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .header-logo {
@@ -44,12 +50,12 @@
 }
 
 .header-nav-items .nav-link:hover {
-  color: #27bdbe;
+  color: #FFD700; /* Changed from #27bdbe to gold for better contrast */
   transform: translateY(-2px);
 }
 
 .header-nav-items .nav-link.active {
-  color: #27bdbe;
+  color: #FFD700; /* Changed from #27bdbe to gold */
   font-weight: 600;
 }
 
@@ -60,7 +66,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #27bdbe;
+  background-color: #FFD700; /* Changed from #27bdbe to gold */
 }
 
 .header-login-btn {
@@ -69,7 +75,7 @@
   gap: 8px;
   padding: 6px 14px;
   border: 2px solid #f4f0f0;
-  color: #601f21;
+  color: #0C2B4E;
   background-color: #ffffff;
   border-radius: 8px;
   font-weight: 600;
@@ -78,13 +84,15 @@
 }
 
 .header-login-btn:hover {
-  background-color: #437d3e;
-  color: white;
+  background-color: #FFD700; /* Changed from #437d3e to gold */
+  color: #0C2B4E;
+  border-color: #FFD700;
 }
 
 .header-login-btn.active-login {
-  background-color: #601f21;
-  color: white;
+  background-color: #FFD700; /* Changed from #601f21 to gold */
+  color: #0C2B4E;
+  border-color: #FFD700;
 }
 
 .icon-wrapper {
@@ -96,8 +104,8 @@
   position: absolute;
   top: -8px;
   right: -45px;
-  background: #ed1944;
-  color: white;
+  background: #FFD700; /* Changed from #ed1944 to gold */
+  color: #0C2B4E;
   font-size: 11px;
   font-weight: bold;
   padding: 4px 5px;
@@ -111,8 +119,8 @@
   position: absolute;
   top: -8px;
   right: -70px;
-  background: #ed1944;
-  color: white;
+  background: #FFD700; /* Changed from #ed1944 to gold */
+  color: #0C2B4E;
   font-size: 11px;
   font-weight: bold;
   padding: 4px 5px;
@@ -132,13 +140,13 @@
 .dropdown-item-custom {
   font-weight: 500;
   padding: 10px 16px;
-  color: #27bdbe;
+  color: #0C2B4E;
   transition: background-color 0.3s;
   text-decoration: none;
 }
 
 .dropdown-item-custom:hover {
-  background-color: #00252a;
+  background-color: #0C2B4E;
   color: #f9fbfc;
 }
 
@@ -162,53 +170,33 @@
   z-index: 999;
 }
 
-/* @media (max-width: 768px) {
-  .header {
-    padding: 15px 20px;
-  }
-
-  .mobile-menu-toggle {
-    display: block;
-  }
-
-  .header-nav-items {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 280px;
-    height: 100vh;
-    background-color: #601f21;
-    flex-direction: column;
-    padding: 30px;
-    gap: 25px;
-    transition: left 0.3s ease;
-    z-index: 1000;
-  }
-
-  .header-nav-items.mobile-menu-open {
-    left: 0;
-  }
-} */
-
 /* Override Bootstrap default active color */
 .dropdown-item-custom.active-dropdown {
-  background-color: #00252a !important;
-  color: #27bdbe !important;
+  background-color: #0C2B4E !important;
+  color: #FFD700 !important;
 }
 
 /* Optional: hover effect for all dropdown items */
 .dropdown-item-custom:hover {
-  background-color: #00252a;
-  color: #27bdbe;
+  background-color: #0C2B4E;
+  color: #FFD700;
 }
 
 @media (max-width: 1025px) {
   .header {
     padding: 15px 20px;
+    background-color: #0C2B4E; /* Ensure mobile also has the new color */
   }
 
   .mobile-menu-toggle {
     display: block;
+  }
+
+  .logo-text {
+    font-size: 16px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
   }
 
   .header-nav-items {
@@ -217,7 +205,7 @@
     left: -100%;
     width: 260px;
     height: 100vh;
-    background-color: #601f21;
+    background-color: #0C2B4E; /* Changed to match new color */
     flex-direction: column;
     align-items: flex-start;
     padding: 60px 20px;
@@ -243,4 +231,25 @@
   }
 }
 
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 14px;
+    max-width: 200px;
+  }
+}
 
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .logo-text {
+    font-size: 12px;
+    max-width: 150px;
+  }
+}
+
+.icon-rotate {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}

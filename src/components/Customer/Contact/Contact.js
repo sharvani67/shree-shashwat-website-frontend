@@ -87,22 +87,22 @@ const ContactUs = () => {
                     <h6 className="mb-1 fw-bold">Phone</h6>
                     <p className="mb-1 fw-bold">
                       <a
-                        href="tel:+918971607888"
+                        href="tel:+919801049700"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-dark text-decoration-none"
                       >
-                        8971607888
+                        9801049700
                       </a>{" "}
-                      /
-                      <a
+                      {/* / */}
+                      {/* <a
                         href="tel:+916363900869"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-dark text-decoration-none"
                       >
                         6363900869
-                      </a>
+                      </a> */}
                     </p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const ContactUs = () => {
                         href="mailto:contact@southsutra.com"
                         className="text-dark text-decoration-none"
                       >
-                        contact@southsutra.com
+                       spmathur56@gmail.com
                       </a>
                     </p>
                   </div>
@@ -137,8 +137,8 @@ const ContactUs = () => {
                         rel="noopener noreferrer"
                         className="text-dark text-decoration-none"
                       >
-                        INFAB AGRO FOODS Pvt Ltd #125/3 Kanminike Village
-                        Hejjala Circle South Taluk Bangalore-562109
+                        PATNA ROAD, 0, SHREE SHASHWAT RAJ AGRO PVT LTD,
+                        BHAKHARUA MORE, DAUDNAGAR, Aurangabad, Bihar 824113
                       </a>
                     </p>
                   </div>

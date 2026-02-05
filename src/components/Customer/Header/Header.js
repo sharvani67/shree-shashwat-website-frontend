@@ -391,6 +391,231 @@
 
 
 
+
+// import React, { useState } from "react";
+// import { NavLink, useLocation } from "react-router-dom";
+// import { Dropdown } from "react-bootstrap";
+// import {
+//   FaHome,
+//   FaHeart,
+//   FaShoppingCart,
+//   FaSignInAlt,
+//   FaUser,
+//   FaCog,
+//   FaSignOutAlt,
+//   FaBars,
+//   FaBoxOpen,
+//   FaClipboardList,
+//   FaInfoCircle,
+//   FaEnvelope,
+//   FaUserCog,
+// } from "react-icons/fa";
+// import "./Header.css";
+// import { useAuth } from "../../AuthContext/AuthContext";
+// import { useCart } from "../../AuthContext/CartContext";
+// import { useWishlist } from "../../AuthContext/WishlistContext";
+// import logo from "../../../assets/logobigger.png";
+
+// function Header() {
+
+//   const location = useLocation();
+//   const { currentUser, logout } = useAuth();
+//   const { cartCount } = useCart();
+//   const { wishlistCount } = useWishlist();
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+//   const handleLogout = async () => {
+//     try {
+//       await logout(); // make sure this is an async signOut function
+//       localStorage.removeItem('customer');
+//       window.location.reload();
+//     } catch (err) {
+//       console.error("Logout error:", err);
+//     }
+//   };
+
+
+//   const toggleMobileMenu = () => {
+//     setIsMobileMenuOpen(!isMobileMenuOpen);
+//   };
+
+//   const handleNavClick = () => {
+//     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+//     setIsMobileMenuOpen(false);
+//   };
+
+//   const isMyOrdersActive =
+//     location.pathname.startsWith("/myorders") ||
+//     location.pathname.startsWith("/ordersDetails/");
+
+//   const isProductsActive =
+//     location.pathname.startsWith("/products") ||
+//     location.pathname.startsWith("/viewdetails/");
+
+//   return (
+//     <>
+//       <header className="header">
+//         <div className="header-logo">
+//           <img src={logo} alt="South Sutra Logo" className="logo-image" />
+//         </div>
+
+//         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+//           <FaBars className={isMobileMenuOpen ? "icon-rotate" : ""} />
+//         </button>
+
+//         <nav className={`header-nav-items ${isMobileMenuOpen ? "mobile-menu-open" : ""}`}>
+//           <NavLink
+//             to="/"
+//             onClick={handleNavClick}
+//             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+//           >
+//             <FaHome className="icon" />
+//             <span className="text">Home</span>
+//           </NavLink>
+
+
+//           <NavLink
+//             to="/products"
+//             onClick={handleNavClick}
+//             className={`nav-link ${isProductsActive ? "active" : ""}`}
+//           >
+//             <FaBoxOpen className="icon" />
+//             <span className="text">Products</span>
+//           </NavLink>
+
+
+
+//           <NavLink
+//             to="/gallery"
+//             onClick={handleNavClick}
+//             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+//           >
+//             <FaEnvelope className="icon" />
+//             <span className="text">Gallery</span>
+//           </NavLink>
+
+//           <NavLink
+//             to="/about"
+//             onClick={handleNavClick}
+//             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+//           >
+//             <FaInfoCircle className="icon" />
+//             <span className="text">Our Story</span>
+//           </NavLink>
+
+
+//           <NavLink
+//             to="/contact"
+//             onClick={handleNavClick}
+//             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+//           >
+//             <FaEnvelope className="icon" />
+//             <span className="text">Contact Us</span>
+//           </NavLink>
+
+
+
+//           <NavLink
+//             to="/myorders"
+//             onClick={handleNavClick}
+//             className={`nav-link ${isMyOrdersActive ? "active" : ""}`}
+//           >
+//             <FaClipboardList className="icon" />
+//             <span className="text">My Orders</span>
+//           </NavLink>
+
+//           <NavLink
+//             to="/wishlist"
+//             onClick={handleNavClick}
+//             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+//           >
+//             <span className="icon-wrapper">
+//               <FaHeart className="icon" />
+//               {wishlistCount > 0 && (
+//                 <span className="header-wishlist-count">{wishlistCount}</span>
+//               )}
+//             </span>
+//             <span className="text">Wishlist</span>
+//           </NavLink>
+
+//           <NavLink
+//             to="/shoppingcart"
+//             onClick={handleNavClick}
+//             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+//           >
+//             <span className="icon-wrapper">
+//               <FaShoppingCart className="icon" />
+//               {cartCount > 0 && (
+//                 <span className="header-cart-count">{cartCount}</span>
+//               )}
+//             </span>
+//             <span className="text">Cart</span>
+//           </NavLink>
+
+
+//           {currentUser ? (
+//             <Dropdown align="end" className="dropdown-container">
+//               <Dropdown.Toggle
+//                 as="button"
+//                 className="bg-transparent border-0 d-flex align-items-center gap-2 dropdown-toggle-custom text-white"
+//               >
+//                 <FaUser className="icon text-white" />
+//                 <span className="text-white">Customer</span>
+//               </Dropdown.Toggle>
+
+//               <Dropdown.Menu className="dropdown-menu-custom">
+//                 <Dropdown.Item
+//                   as={NavLink}
+//                   to="/profile"
+//                   onClick={handleNavClick}
+//                   className={({ isActive }) =>
+//                     `dropdown-item-custom ${isActive ? "active-dropdown" : ""}`
+//                   }
+//                 >
+//                   <FaUserCog className="me-2" />
+//                   My Profile
+//                 </Dropdown.Item>
+
+//                 <Dropdown.Item
+//                   onClick={() => {
+//                     handleLogout();
+//                     handleNavClick();
+//                   }}
+//                   className="dropdown-item-custom"
+//                   style={{ color: "red" }}
+//                 >
+//                   <FaSignOutAlt className="me-2" />
+//                   Logout
+//                 </Dropdown.Item>
+//               </Dropdown.Menu>
+//             </Dropdown>
+//           ) : (
+//             <NavLink
+//               to="/login"
+//               onClick={handleNavClick}
+//               className={({ isActive }) =>
+//                 `header-login-btn ${isActive ? "active-login" : ""}`
+//               }
+//             >
+//               <FaSignInAlt className="icon" />
+//               <span className="text">Login</span>
+//             </NavLink>
+//           )}
+//         </nav>
+//       </header>
+
+//       {isMobileMenuOpen && (
+//         <div className="mobile-menu-overlay" onClick={toggleMobileMenu}></div>
+//       )}
+//     </>
+//   );
+// }
+
+// export default Header;
+
+
+
+
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -400,7 +625,6 @@ import {
   FaShoppingCart,
   FaSignInAlt,
   FaUser,
-  FaCog,
   FaSignOutAlt,
   FaBars,
   FaBoxOpen,
@@ -413,10 +637,8 @@ import "./Header.css";
 import { useAuth } from "../../AuthContext/AuthContext";
 import { useCart } from "../../AuthContext/CartContext";
 import { useWishlist } from "../../AuthContext/WishlistContext";
-import logo from "../../../assets/logobigger.png";
 
 function Header() {
-
   const location = useLocation();
   const { currentUser, logout } = useAuth();
   const { cartCount } = useCart();
@@ -425,14 +647,13 @@ function Header() {
 
   const handleLogout = async () => {
     try {
-      await logout(); // make sure this is an async signOut function
-      localStorage.removeItem('customer');
+      await logout();
+      localStorage.removeItem("customer");
       window.location.reload();
     } catch (err) {
       console.error("Logout error:", err);
     }
   };
-
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -455,14 +676,18 @@ function Header() {
     <>
       <header className="header">
         <div className="header-logo">
-          <img src={logo} alt="South Sutra Logo" className="logo-image" />
+          <span className="logo-text">SHREE SHASHWAT RAJ </span>
         </div>
 
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
           <FaBars className={isMobileMenuOpen ? "icon-rotate" : ""} />
         </button>
 
-        <nav className={`header-nav-items ${isMobileMenuOpen ? "mobile-menu-open" : ""}`}>
+        <nav
+          className={`header-nav-items ${
+            isMobileMenuOpen ? "mobile-menu-open" : ""
+          }`}
+        >
           <NavLink
             to="/"
             onClick={handleNavClick}
@@ -471,7 +696,6 @@ function Header() {
             <FaHome className="icon" />
             <span className="text">Home</span>
           </NavLink>
-
 
           <NavLink
             to="/products"
@@ -482,16 +706,14 @@ function Header() {
             <span className="text">Products</span>
           </NavLink>
 
-
-
-          <NavLink
+          {/* <NavLink
             to="/gallery"
             onClick={handleNavClick}
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
           >
             <FaEnvelope className="icon" />
             <span className="text">Gallery</span>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/about"
@@ -502,7 +724,6 @@ function Header() {
             <span className="text">Our Story</span>
           </NavLink>
 
-
           <NavLink
             to="/contact"
             onClick={handleNavClick}
@@ -511,8 +732,6 @@ function Header() {
             <FaEnvelope className="icon" />
             <span className="text">Contact Us</span>
           </NavLink>
-
-
 
           <NavLink
             to="/myorders"
@@ -550,7 +769,6 @@ function Header() {
             </span>
             <span className="text">Cart</span>
           </NavLink>
-
 
           {currentUser ? (
             <Dropdown align="end" className="dropdown-container">
@@ -611,5 +829,3 @@ function Header() {
 }
 
 export default Header;
-
-
