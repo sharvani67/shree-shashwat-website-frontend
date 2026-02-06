@@ -34,8 +34,7 @@ function Home() {
         {/* <BulkOrderSection /> */}
         
         <Testimonials />
-        {/* <JoinWhatsApp /> */}
-        <Commitment />
+      
       </div>
       <Footer />
     </>

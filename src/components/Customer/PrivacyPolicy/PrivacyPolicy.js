@@ -12,7 +12,7 @@
 //         <div className="card shadow-lg rounded-4 border-0">
 //           <div className="policy-card-header text-white rounded-top p-4">
 //             <h1 className="mb-0">Privacy Policy</h1>
-//             <small className="fst-italic">SHREE SHASHWAT RAJ - Authentic Masala & Chili Powders</small>
+//             <small className="fst-italic">SHREE SHASHWATHRAJ - Authentic Masala & Chili Powders</small>
 //           </div>
 //           <div className="card-body p-4" style={{ backgroundColor: '#f8f9fa', backgroundImage: 'linear-gradient(to bottom, #f8f9fa, #e9ecef)' }}>
 //             <p className="lead">
@@ -183,7 +183,7 @@
 //               Should you have any questions about our privacy practices or this Privacy Policy, or if you would like to exercise any of the rights available to you, please email us at <a href="mailto:spmathur56@gmail.com
 // " className="text-color text-decoration-underline">spmathur56@gmail.com
 // </a> or contact us at <b>
-//   SHREE SHASHWAT RAJ AGRO PVT. LTD., Patna Road, Bhakharuan More, Daudnagar, Aurangabad, Bihar - 824113
+//   SHREE SHASHWATHRAJ AGRO PVT. LTD., Patna Road, Bhakharuan More, Daudnagar, Aurangabad, Bihar - 824113
 // </b>
 
 
@@ -232,7 +232,7 @@ const PrivacyPolicy = () => {
           <div className="policy-card-header text-white rounded-top p-4">
             <h1 className="mb-0">Privacy Policy</h1>
             <small className="fst-italic">
-              SHREE SHASHWAT RAJ – Preserving Authentic South Indian Culinary Heritage
+              SHREE SHASHWATHRAJ – Supplying Quality Groceries with Trust
             </small>
           </div>
 
@@ -244,7 +244,7 @@ const PrivacyPolicy = () => {
             }}
           >
             <p className="lead">
-              At SHREE SHASHWAT RAJ, operated by SHREE SHASHWAT RAJ AGRO PVT. LTD.
+              At SHREE SHASHWATHRAJ, operated by SHREE SHASHWATHRAJ AGRO PVT. LTD.
               (“we”, “us”, or “our”), we are committed to preserving the rich
               culinary heritage of South India while responsibly serving modern
               households across the globe. This Privacy Policy explains how we
@@ -443,7 +443,7 @@ const PrivacyPolicy = () => {
               </a>{' '}
               or contact us at{' '}
               <b>
-                SHREE SHASHWAT RAJ AGRO PVT. LTD., Patna Road, Bhakharuan More,
+                SHREE SHASHWATHRAJ AGRO PVT. LTD., Patna Road, Bhakharuan More,
                 Daudnagar, Aurangabad, Bihar – 824113
               </b>
             </p>

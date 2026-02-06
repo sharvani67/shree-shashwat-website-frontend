@@ -67,23 +67,23 @@ import './CoreValuesSection.css';
 
 const values = [
   {
-    title: 'Authenticity',
-    text: 'We honor the traditions and recipes passed down through generations, ensuring every product captures the true flavors of South India.',
+    title: 'Trust & Transparency',
+    text: 'We build strong relationships with retailers and customers through honest pricing, clear communication, and dependable business practices.',
     icon: 'fas fa-seedling',
   },
   {
-    title: 'Innovation',
-    text: 'While we respect tradition, we also embrace creativity, craftingmodern interpretations of timeless recipes to meet today’s evolving tastes',
+    title: 'Product Quality',
+    text: 'We ensure every grocery product meets high quality standards through careful sourcing, proper storage, and efficient distribution.',
     icon: 'fas fa-lightbulb',
   },
   {
-    title: 'Quality',
-    text: 'From sourcing the finest ingredients to our meticulous preparation, weare committed to delivering excellence in every product through manufacturing and process excellence',
+    title: 'Customer-Centric Approach',
+    text: 'We understand retailer and customer needs and work continuously to provide the right products, timely deliveries, and reliable service.',
     icon: 'fas fa-award',
   },
   {
-    title: 'Sustainability',
-    text: ' We care for our planet and future generations by prioritizing eco-friendly practices, sustainable sourcing, and responsible packaging.',
+    title: 'Operational Excellence',
+    text: 'Our focus is on streamlined processes, inventory accuracy, and consistent supply to support smooth day-to-day business operations.',
     icon: 'fas fa-leaf',
   },
 ];

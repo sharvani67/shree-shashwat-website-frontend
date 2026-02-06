@@ -269,9 +269,9 @@
 //             <div className="footer-logo-container">
 //               <img src={logo} alt="SutraCart Logo" className="footer-logo" />
 //             </div>
-//             <h2>SHREE SHASHWAT RAJ AGRO PVT.LTD.</h2>
+//             <h2>SHREE SHASHWATHRAJ AGRO PVT.LTD.</h2>
 //             <p className="footer-desc">
-//             PATNA ROAD, 0, SHREE SHASHWAT RAJ AGRO PVT LTD, BHAKHARUA MORE, DAUDNAGAR, Aurangabad, Bihar 824113 Email:spmathur56@gmail.com  | Phone: 9801049700 | GSTIN: 10AAOCS1541B1ZZ
+//             PATNA ROAD, 0, SHREE SHASHWATHRAJ AGRO PVT LTD, BHAKHARUA MORE, DAUDNAGAR, Aurangabad, Bihar 824113 Email:spmathur56@gmail.com  | Phone: 9801049700 | GSTIN: 10AAOCS1541B1ZZ
 //             </p>
 //           </Col>
 
@@ -375,7 +375,7 @@
 //       <Container>
 //         <Row className="footer-top align-items-start">
 //           <Col xs={12} lg={3} className="footer-col fade-in-up">
-//             <h5 className="footer-heading">SHREE SHASHWAT RAJ </h5>
+//             <h5 className="footer-heading">SHREE SHASHWATHRAJ </h5>
 //           </Col>
 
 //           <Col xs={12} lg={3} className="footer-col fade-in-up delay-1">
@@ -398,7 +398,7 @@
 //               <li><BsTelephone className="footer-icon" /> 9801049700</li>
 //               <li>
 //           <GrLocation className="footer-icon" />
-//           SHREE SHASHWAT RAJ AGRO PVT. LTD,<br />
+//           SHREE SHASHWATHRAJ AGRO PVT. LTD,<br />
 //           Patna Road,<br />
 //           Bhakharua More, Daudnagar,<br />
 //           Aurangabad, Bihar - 824113<br />
@@ -467,9 +467,9 @@ function Footer() {
         <Row className="footer-top align-items-start">
           <Col xs={12} lg={3} className="footer-col fade-in-up">
             <div className="brand-section">
-              <h5 className="footer-brand">SHREE SHASHWAT RAJ</h5>
+              <h5 className="footer-brand">SHREE SHASHWATHRAJ</h5>
               <p className="footer-desc">
-                <strong>SHREE SHASHWAT RAJ AGRO PVT. LTD</strong><br />
+                <strong>SHREE SHASHWATHRAJ AGRO PVT. LTD</strong><br />
               
               </p>
             </div>

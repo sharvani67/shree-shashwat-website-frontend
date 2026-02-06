@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
         <div className="card shadow-lg rounded-4 border-0">
           <div className="policy-card-header text-white rounded-top p-4">
             <h1 className="mb-0">Terms of Service</h1>
-            <small className="fst-italic">SHREE SHASHWAT RAJ - Authentic Masala & Chili Powders</small>
+            <small className="fst-italic">SHREE SHASHWATHRAJ - Supplying Quality Groceries with Trust</small>
           </div>
           <div 
             className="card-body p-4" 
@@ -26,10 +26,10 @@ const TermsAndConditions = () => {
           >
             <h4 className="mt-4 mb-3 text-color"><FaInfoCircle className="me-2" />OVERVIEW</h4>
             <p>
-              This website is operated by SHREE SHASHWAT RAJ (
-PATNA ROAD, SHREE SHASHWAT RAJ AGRO PVT LTD,
+              This website is operated by SHREE SHASHWATHRAJ (
+PATNA ROAD, SHREE SHASHWATHRAJ AGRO PVT LTD,
 BHAKHARUAN MORE, DAUDNAGAR,
-AURANGABAD, BIHAR 824113). Throughout the site, the terms "we", "us" and "our" refer to SHREE SHASHWAT RAJ (Brand name SHREE SHASHWAT RAJ). SHREE SHASHWAT RAJ offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+AURANGABAD, BIHAR 824113). Throughout the site, the terms "we", "us" and "our" refer to SHREE SHASHWATHRAJ (Brand name SHREE SHASHWATHRAJ). SHREE SHASHWATHRAJ offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
             </p>
             <p>
               By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions ("Terms of Service", "Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/or contributors of content.

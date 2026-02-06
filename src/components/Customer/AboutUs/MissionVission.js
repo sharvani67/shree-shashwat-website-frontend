@@ -11,9 +11,9 @@ const MissionVision = () => {
             <FaLeaf />
           </div>
           <h2 className="mv-title">Our Mission</h2>
-          <h4 className="mv-tagline">Preserving Culinary Heritage</h4>
+          <h4 className="mv-tagline">Supplying Quality Groceries with Trust</h4>
           <p className="mv-text">
-            We craft and share high-quality, authentic South Indian foods that honor age-old traditions while meeting modern needs. From bold spices to nostalgic snacks, each bite is a celebration of culture and care.
+           We aim to provide reliable, high-quality grocery products to retailers and customers at competitive prices. Our focus is on consistent supply, product freshness, and building long-term partnerships that help businesses grow smoothly.
           </p>
         </div>
 
@@ -22,9 +22,9 @@ const MissionVision = () => {
             <FaGlobeAsia />
           </div>
           <h2 className="mv-title">Our Vision</h2>
-          <h4 className="mv-tagline">Bringing South Indian Flavors to the World</h4>
+          <h4 className="mv-tagline">Empowering Retailers, Serving Every Household</h4>
           <p className="mv-text">
-            As global ambassadors of South Indian culinary heritage, we strive to delight every plate with innovation, authenticity, and joy — building a bridge between rich tradition and modern palates across the world.
+            Our vision is to become a trusted grocery distribution partner by connecting manufacturers, retailers, and customers through efficient service, dependable delivery, and a wide range of everyday essential products.
           </p>
         </div>
       </div>

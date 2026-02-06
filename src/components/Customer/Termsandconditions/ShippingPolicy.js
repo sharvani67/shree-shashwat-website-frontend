@@ -12,7 +12,7 @@ const TermsAndConditions = () => {
         <div className="card shadow-lg rounded-4 border-0">
           <div className="policy-card-header  text-white rounded-top p-4">
             <h1 className="mb-0">Shipping Policy</h1>
-            <small className="fst-italic">SHREE SHASHWAT RAJ - Authentic Masala & Chili Powders</small>
+            <small className="fst-italic">SHREE SHASHWATHRAJ - Supplying Quality Groceries with Trust</small>
           </div>
           <div className="card-body p-4" style={{ backgroundColor: '#f8f9fa', backgroundImage: 'linear-gradient(to bottom, #f8f9fa, #e9ecef)' }}>
             <p className="lead">

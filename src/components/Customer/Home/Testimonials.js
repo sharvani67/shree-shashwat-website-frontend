@@ -35,14 +35,14 @@ const testimonials = [
     id: 4,
     name: "Anirudh Rao",
     title: "Chef, Chennai",
-    message: "As a chef, I’m always hunting for authenticity. SHREE SHASHWAT RAJ  nailed it. Their commitment to tradition and purity is unmatched.",
+    message: "As a chef, I’m always hunting for authenticity. SHREE SHASHWATHRAJ  nailed it. Their commitment to tradition and purity is unmatched.",
     avatar: Image2,
   },
   {
     id: 5,
     name: "Aisha",
     title: "Working Mom, Hyderabad",
-    message: "I trust SHREE SHASHWAT RAJ  for my family’s meals. The flavors are rich, and knowing it supports women makes every purchase feel right.",
+    message: "I trust SHREE SHASHWATHRAJ  for my family’s meals. The flavors are rich, and knowing it supports women makes every purchase feel right.",
     avatar: Image5,
   },
   {
