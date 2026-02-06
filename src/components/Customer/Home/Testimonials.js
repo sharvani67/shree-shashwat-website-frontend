@@ -28,28 +28,28 @@ const testimonials = [
     id: 3,
     name: "Sowmya",
     title: "Food Blogger, Bengaluru",
-    message: "Their masala blends are game-changers! You can literally taste the freshness and care in every bite. Highly recommend!",
+    message: "Their masala blends are true game-changers. Consistent quality, outstanding freshness, and great customer demand. A highly recommended brand for retailers.",
     avatar: Image3,
   },
   {
     id: 4,
     name: "Anirudh Rao",
     title: "Chef, Chennai",
-    message: "As a chef, I’m always hunting for authenticity. SHREE SHASHWATHRAJ  nailed it. Their commitment to tradition and purity is unmatched.",
+    message: "From a retailer’s perspective, SHREE SHASHWATHRAJ stands out for its authentic taste and pure ingredients. It’s a brand customers trust and return to.",
     avatar: Image2,
   },
   {
     id: 5,
     name: "Aisha",
     title: "Working Mom, Hyderabad",
-    message: "I trust SHREE SHASHWATHRAJ  for my family’s meals. The flavors are rich, and knowing it supports women makes every purchase feel right.",
+    message: "Customers trust SHREE SHASHWATHRAJ for their family meals. The rich flavors and women-led values make it a feel-good, fast-moving product for retailers.",
     avatar: Image5,
   },
   {
     id: 6,
     name: "Kaveri",
     title: "IT Consultant, Warangal",
-    message: "Fast delivery, great packaging, and exceptional taste. SHREE SHASHWAT RAJ is my new go-to for spices and condiments.",
+    message: "Retailer-approved for fast delivery, quality packaging, and exceptional taste—SHREE SHASHWAT RAJ is a trusted spice brand.",
     avatar: "https://i.pinimg.com/1200x/a5/2c/44/a52c4459940205d17c98ab5c254689f5.jpg",
   }
 ];

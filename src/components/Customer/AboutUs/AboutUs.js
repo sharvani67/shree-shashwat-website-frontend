@@ -155,7 +155,7 @@ const AboutUs = () => {
       <CoreValuesSection />
       
       {/* Footer */}
-      <section className="cta-section text-center">
+      {/* <section className="cta-section text-center">
         <div className="container">
           <h2>Looking for a Trusted Grocery Partner?</h2>
           <p>We supply quality groceries to retailers and customers with consistency and care.</p>
@@ -163,7 +163,7 @@ const AboutUs = () => {
             Shop Now
           </Link>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </>
