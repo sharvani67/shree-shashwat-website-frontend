@@ -22,7 +22,7 @@ function Home() {
        <EcommerceCarousel />
        <MasalaPastes />
        <Testimonials />
-       <Commitment />
+     
        
        
       </div>
