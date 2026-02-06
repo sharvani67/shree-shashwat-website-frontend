@@ -35,14 +35,14 @@ const testimonials = [
     id: 4,
     name: "Anirudh Rao",
     title: "Chef, Chennai",
-    message: "From a retailer’s perspective, SHREE SHASHWATHRAJ stands out for its authentic taste and pure ingredients. It’s a brand customers trust and return to.",
+    message: "From a retailer’s perspective, SHREE SHASHWATRAJ stands out for its authentic taste and pure ingredients. It’s a brand customers trust and return to.",
     avatar: Image2,
   },
   {
     id: 5,
     name: "Aisha",
     title: "Working Mom, Hyderabad",
-    message: "Customers trust SHREE SHASHWATHRAJ for their family meals. The rich flavors and women-led values make it a feel-good, fast-moving product for retailers.",
+    message: "Customers trust SHREE SHASHWATRAJ for their family meals. The rich flavors and women-led values make it a feel-good, fast-moving product for retailers.",
     avatar: Image5,
   },
   {

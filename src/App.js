@@ -75,7 +75,7 @@ function AppContent() {
 
   return (
     <>
-       {!shouldHideStickyOffer && <StickyOfferStrip />}
+       {/* {!shouldHideStickyOffer && <StickyOfferStrip />} */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Lalbagh-flower-show-promotion" element={<Lalbaghflower />} />
