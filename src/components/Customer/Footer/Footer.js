@@ -467,9 +467,9 @@ function Footer() {
         <Row className="footer-top align-items-start">
           <Col xs={12} lg={3} className="footer-col fade-in-up">
             <div className="brand-section">
-              <h5 className="footer-brand">SHREE SHASHWATHRAJ</h5>
+              <h5 className="footer-brand">SHREE SHASHWATRAJ</h5>
               <p className="footer-desc">
-                <strong>SHREE SHASHWATHRAJ AGRO PVT. LTD</strong><br />
+                <strong>SHREE SHASHWATRAJ AGRO PVT. LTD</strong><br />
               
               </p>
             </div>
@@ -514,13 +514,13 @@ function Footer() {
               <li><a href="/faq">FAQ's</a></li>
             </ul>
             
-            <h5 className="footer-heading follow-us">Follow Us</h5>
+            {/* <h5 className="footer-heading follow-us">Follow Us</h5>
             <div className="social-icons">
               <a href="https://www.facebook.com/profile.php?id=61576200795479" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
               <a href="https://www.instagram.com/southsutra_/?next=%2F" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
               <a href="https://youtube.com/@southsutra?si=Ygg6_WZEjIAsfQBO" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
             </div>
-            <p className="footer-desc social-desc">Stay updated with our latest products and offers.</p>
+            <p className="footer-desc social-desc">Stay updated with our latest products and offers.</p> */}
           </Col>
         </Row>
 

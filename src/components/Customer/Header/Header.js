@@ -676,7 +676,7 @@ function Header() {
     <>
       <header className="header">
         <div className="header-logo">
-          <span className="logo-text">SHREE SHASHWATHRAJ </span>
+          <span className="logo-text">SHREE SHASHWATRAJ </span>
         </div>
 
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
