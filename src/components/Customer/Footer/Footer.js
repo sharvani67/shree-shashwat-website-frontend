@@ -511,7 +511,7 @@ function Footer() {
               <li><a href="/privacypolicy">Privacy Policy</a></li>
               <li><a href="/refundpolicy">Refund Policy</a></li>
               <li><a href="/shippingpolicy">Shipping Policy</a></li>
-              <li><a href="/faq">FAQ's</a></li>
+              {/* <li><a href="/faq">FAQ's</a></li> */}
             </ul>
             
             {/* <h5 className="footer-heading follow-us">Follow Us</h5>

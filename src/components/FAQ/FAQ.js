@@ -4,18 +4,8 @@ import Header from '../Customer/Header/Header';
 import Footer from '../Customer/Footer/Footer';
 
 const faqData = [
- {
-    id: 1,
-    question: "What makes your masalas and pickles different from store-bought ones?",
-    answer:
-      "Our masalas and pickles are handcrafted in small batches using age-old family recipes passed down through generations. Unlike mass-produced products, each jar is made with love, care, and handpicked farm-fresh ingredients—ensuring both purity and authenticity.",
-  },
-  {
-    id: 2,
-    question: "Who makes your products?",
-    answer:
-      "Our products are proudly made by local women, many of whom are homemakers turned artisans. We provide them with fair wages, training, and a safe workspace, creating not just quality products but also empowering lives.",
-  },
+
+ 
   {
     id: 3,
     question: "Are your ingredients natural and preservative-free?",
