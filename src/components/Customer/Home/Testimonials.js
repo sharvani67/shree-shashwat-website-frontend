@@ -49,8 +49,8 @@ const testimonials = [
     id: 6,
     name: "Kaveri",
     title: "IT Consultant, Warangal",
-    message: "Fast delivery, great packaging, and exceptional taste. SouthSutra is my new go-to for spices and condiments.",
-    avatar: "https://randomuser.me/api/portraits/men/88.jpg",
+    message: "Fast delivery, great packaging, and exceptional taste. SHREE SHASHWAT RAJ is my new go-to for spices and condiments.",
+    avatar: "https://i.pinimg.com/1200x/a5/2c/44/a52c4459940205d17c98ab5c254689f5.jpg",
   }
 ];
 
