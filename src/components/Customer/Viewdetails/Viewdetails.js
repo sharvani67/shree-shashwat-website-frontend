@@ -437,7 +437,7 @@ export default function Viewdetails() {
                 gap: '8px',
               }}
             >
-             {images.map((img, index) => (
+             {/* {images.map((img, index) => (
   <img
     key={index}
     src={`${baseURL}${img}`}
@@ -453,7 +453,7 @@ export default function Viewdetails() {
       transition: 'border 0.3s',
     }}
   />
-))}
+))} */}
 
             </div>
 

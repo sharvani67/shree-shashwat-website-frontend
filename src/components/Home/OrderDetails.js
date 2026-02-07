@@ -172,9 +172,9 @@ const OrderDetails = () => {
           ← Back to My Orders
         </button>
         <h3 className="mb-0 fw-semibold text-dark">Order Details</h3>
-        <button className="btn btn-primary">
+        {/* <button className="btn btn-primary">
           ⬇ Download Invoice
-        </button>
+        </button> */}
       </div>
 
       {/* Order Status */}

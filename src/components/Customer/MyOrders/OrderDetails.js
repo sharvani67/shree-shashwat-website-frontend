@@ -214,7 +214,7 @@ function OrderDetails() {
               <h3 className="mb-0">Order Details</h3>
             </div>
             <div className="d-flex gap-2">
-              <PDFDownloadLink
+              {/* <PDFDownloadLink
                 document={<InvoiceDocument orderData={orderData} 
                 subtotal={subtotal} 
                 shippingCharge={shippingCharge} 
@@ -227,7 +227,7 @@ function OrderDetails() {
                 className="btn btn-outline-secondary"
               >
                 {({ loading }) => (loading ? 'Preparing document...' : '⬇ Download Invoice')}
-              </PDFDownloadLink>
+              </PDFDownloadLink> */}
               {orderData.status === "Delivered" &&
                 (orderData.feedback ? (
                   <div

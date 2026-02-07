@@ -179,7 +179,7 @@ function OrderDetails() {
                             </h3>
                         </Col>
 
-                        <Col md="auto" className="d-flex gap-3 justify-content-end align-items-center">
+                        {/* <Col md="auto" className="d-flex gap-3 justify-content-end align-items-center">
                             <PDFDownloadLink
                                 document={<InvoiceDocument
                                     orderData={orderData}
@@ -219,7 +219,7 @@ function OrderDetails() {
                                     Cancelled
                                 </option>
                             </select>
-                        </Col>
+                        </Col> */}
                     </Row>
 
                     <Row>

@@ -217,9 +217,9 @@ function OrderDetails() {
                         </Col>
 
                         <Col md="auto" className="d-flex gap-3 justify-content-end align-items-center">
-                            <button className="btn btn-outline-secondary" onClick={generateInvoicePDF}>
+                            {/* <button className="btn btn-outline-secondary" onClick={generateInvoicePDF}>
                                 ⬇ Download Invoice
-                            </button>
+                            </button> */}
 
                             <select
                                 value={orderData.status}

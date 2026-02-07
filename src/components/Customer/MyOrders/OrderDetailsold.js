@@ -951,12 +951,12 @@ function OrderDetails() {
               <h3 className="mb-0">Order Details</h3>
             </div>
             <div className="d-flex gap-2">
-              <button
+              {/* <button
                 className="btn btn-outline-secondary"
                 onClick={generateInvoicePDF}
               >
                 ⬇ Download Invoice
-              </button>
+              </button> */}
               {orderData.status === "Delivered" &&
                 (orderData.feedback ? (
                   <div
